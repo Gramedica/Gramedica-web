@@ -18,7 +18,7 @@
     html { scroll-behavior: smooth; }
     body { background: var(--navy); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; min-height: 100vh; overflow-x: hidden; }
     .bg-layer { position: fixed; inset: 0; z-index: 0; pointer-events: none; background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(0,150,210,0.18) 0%, transparent 65%), radial-gradient(ellipse 50% 40% at 80% 80%, rgba(0,100,180,0.10) 0%, transparent 60%), var(--navy); }
-    .bg-grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.04; background-image: linear-gradient(rgba(0,200,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(0,200,255,0.8) 1px, transparent 1px); background-size: 60px 60px; }
+    .bg-grid { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.03; background-image: linear-gradient(rgba(0,200,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(0,200,255,1) 1px, transparent 1px); background-size: 80px 80px; background-position: center center; }
     .page { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
     header { padding: 2.5rem 0 2rem; display: flex; align-items: center; gap: 1.25rem; border-bottom: 1px solid var(--border); animation: fadeDown 0.7s ease both; }
     header img { width: 52px; height: 52px; filter: drop-shadow(0 0 12px rgba(0,200,255,0.5)); }
@@ -36,7 +36,7 @@
     .notice strong { color: #FFC107; }
     .section-label { font-family: 'Syne', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cyan); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; animation: fadeUp 0.8s 0.2s ease both; }
     .section-label::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, var(--border), transparent); }
-    .products { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 4rem; animation: fadeUp 0.8s 0.25s ease both; }
+    .products { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 4rem; animation: fadeUp 0.8s 0.25s ease both; }
     .product-card { background: linear-gradient(135deg, rgba(13,27,46,0.95), rgba(18,35,64,0.9)); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; }
     .product-card:hover { transform: translateY(-3px); border-color: rgba(0,200,255,0.4); box-shadow: 0 12px 40px rgba(0,150,210,0.15); }
     .product-header { padding: 1.5rem 1.5rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 1rem; }
@@ -63,7 +63,7 @@
     .footer-right { text-align: right; font-size: 0.72rem; color: var(--gray); line-height: 2; }
     @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @media (max-width: 640px) { .page { padding: 0 1.25rem; } header { flex-wrap: wrap; } .header-right { width: 100%; text-align: left; margin-top: 0.5rem; } footer { grid-template-columns: 1fr; } .footer-right { text-align: left; } }
+    @media (max-width: 640px) { .page { padding: 0 1.25rem; } header { flex-wrap: wrap; } .header-right { width: 100%; text-align: left; margin-top: 0.5rem; } footer { grid-template-columns: 1fr; } .footer-right { text-align: left; } .products { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -114,7 +114,7 @@
     <div class="lang-btn placeholder"><span class="flag">&#127477;&#127481;</span><span class="lang-name">Portugu&#234;s<span class="lang-code">PT &mdash; Soon</span></span></div>
     <div class="lang-btn placeholder"><span class="flag">&#127464;&#127475;</span><span class="lang-name">&#20013;&#25991; &#31616;<span class="lang-code">ZH-CN &mdash; Soon</span></span></div>
     <div class="lang-btn placeholder"><span class="flag">&#127481;&#127484;</span><span class="lang-name">&#20013;&#25991; &#32321;<span class="lang-code">ZH-TW &mdash; Soon</span></span></div>
-    <div class="lang-btn placeholder"><span class="flag">&#127481;&#127469;</span><span class="lang-name">&#3616;&#3634;&#3625;&#3634;&#3652;&#3607;&#span class="lang-code">TH &mdash; Soon</span></span></div>
+    <div class="lang-btn placeholder"><span class="flag">&#127481;&#127469;</span><span class="lang-name">Thai<span class="lang-code">TH &mdash; Soon</span></span></div>
     <div class="lang-btn placeholder"><span class="flag">&#127479;&#127476;</span><span class="lang-name">Rom&#226;n&#259;<span class="lang-code">RO &mdash; Soon</span></span></div>
     <div class="lang-btn placeholder"><span class="flag">&#127480;&#127462;</span><span class="lang-name">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;<span class="lang-code">AR &mdash; Soon</span></span></div>
     <div class="lang-btn placeholder"><span class="flag">&#127480;&#127466;</span><span class="lang-name">Svenska<span class="lang-code">SV &mdash; Soon</span></span></div>
