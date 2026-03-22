@@ -505,6 +505,7 @@
       <div class="site-nav__links">
         <a href="/products/" class="active">Products</a>
         <a href="/for-doctors/">For Surgeons</a>
+        <a href="/ifu/">Instructions for Use</a>
         <a href="/for-patients/">For Patients</a>
         <a href="/about-us/">About Us</a>
         <a href="/contact-us/">Contact</a>
@@ -574,17 +575,22 @@
     <section class="dual-cta">
       <div class="container">
         <div class="dual-cta__grid">
-          <a href="/for-doctors/" class="cta-card cta-card--surgeon">
+          <div class="cta-card cta-card--surgeon">
             <div>
               <h3 class="cta-card__title">I'm a Surgeon</h3>
               <p class="cta-card__desc">Access clinical data, surgical techniques, and order inventory through our Physician Hub.</p>
             </div>
-            <span class="cta-card__link">
-              Physician Hub
-              <span class="material-symbols-outlined">arrow_right_alt</span>
-            </span>
+            <div>
+              <a href="/for-doctors/" class="cta-card__link">
+                Physician Hub
+                <span class="material-symbols-outlined">arrow_right_alt</span>
+              </a>
+              <a href="/ifu/" style="display:block;margin-top:0.75rem;font-size:0.8125rem;color:rgba(255,255,255,0.55);transition:color 150ms ease;">
+                Instructions for Use &rarr;
+              </a>
+            </div>
             <span class="cta-card__watermark">MD</span>
-          </a>
+          </div>
           <a href="/for-patients/" class="cta-card cta-card--patient">
             <div>
               <h3 class="cta-card__title">I'm a Patient</h3>
@@ -684,6 +690,22 @@
             <h4>5.2% Removal</h4>
             <p>Significantly lower removal rate vs. up to 58% for competing implants.</p>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ IFU CALLOUT ════════════════════════════════════════════════════ -->
+    <section style="background:#F8F9FB;padding-block:var(--space-xl);border-top:1px solid #E5ECF4;">
+      <div class="container">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:var(--space-lg);justify-content:space-between;max-width:900px;margin:0 auto;">
+          <div style="display:flex;align-items:center;gap:var(--space-md);">
+            <span class="material-symbols-outlined" style="font-size:2.5rem;color:var(--blue);">menu_book</span>
+            <div>
+              <h3 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:600;margin-bottom:0.25rem;">Instructions for Use</h3>
+              <p style="font-size:0.9375rem;color:var(--text-muted);line-height:1.5;">Access digital IFU documents for all GraMedica devices.</p>
+            </div>
+          </div>
+          <a href="/ifu/" class="btn btn--primary">View IFU Library</a>
         </div>
       </div>
     </section>
