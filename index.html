@@ -1,225 +1,1128 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GraMedica — Instructions for Use</title>
+  <meta name="description" content="GraMedica — Restoring motion. Restoring life. Makers of HyProCure®, the world's leading extra-osseous taloTarsal stabilization device." />
+  <title>GraMedica — Restoring Motion. Restoring Life.</title>
+
+  <!-- Preconnect for Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Global stylesheet -->
+  <link rel="stylesheet" href="/css/global.css" />
+
+  <!-- Page-specific styles -->
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --navy:#08111F;--navy2:#0D1B2E;--navy3:#122340;
-      --cyan:#00C8FF;--gray:#8A9BB0;--lgray:#C8D6E5;
-      --border:rgba(0,200,255,0.15);
+    /* ── Hero ─────────────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-block: 5rem;
     }
-    body{background:var(--navy);color:#fff;font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden}
-    .bg-layer{position:fixed;inset:0;z-index:0;pointer-events:none;
-      background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(0,150,210,0.18) 0%,transparent 65%),
-                 radial-gradient(ellipse 50% 40% at 80% 80%,rgba(0,100,180,0.10) 0%,transparent 60%),var(--navy)}
-    .page{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 2rem}
-    header{padding:2.5rem 0 2rem;display:flex;align-items:center;gap:1.25rem;border-bottom:1px solid var(--border)}
-    header img{width:48px;height:48px;filter:drop-shadow(0 0 10px rgba(0,200,255,0.5))}
-    .brand-block h1{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;line-height:1}
-    .brand-block p{font-size:0.73rem;color:var(--cyan);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px}
-    .header-right{margin-left:auto;text-align:right;font-size:0.72rem;color:var(--gray);line-height:1.8}
-    .header-right a{color:var(--cyan);text-decoration:none}
-    .hero{padding:4rem 0 2.5rem}
-    .hero-label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;
-      letter-spacing:0.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.25rem}
-    .hero-label::before{content:'';display:block;width:28px;height:1px;background:var(--cyan)}
-    .hero h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;margin-bottom:1rem}
-    .hero h2 span{color:var(--cyan)}
-    .hero p{max-width:580px;color:var(--lgray);font-size:1rem;line-height:1.75}
-    .notice{margin:1.5rem 0 3rem;padding:0.85rem 1.25rem;
-      border:1px solid rgba(255,193,7,0.3);border-left:3px solid #FFC107;
-      background:rgba(255,193,7,0.05);border-radius:4px;
-      font-size:0.82rem;color:#FFDA6A;line-height:1.6}
-    .notice strong{color:#FFC107}
-    .section-label{font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;
-      letter-spacing:0.16em;text-transform:uppercase;color:var(--cyan);
-      margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem}
-    .section-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
-    .products{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:4rem}
-    .product-card{background:linear-gradient(135deg,rgba(13,27,46,0.95),rgba(18,35,64,0.9));
-      border:1px solid var(--border);border-radius:12px;overflow:hidden;
-      transition:transform 0.3s ease,border-color 0.3s ease,box-shadow 0.3s ease}
-    .product-card:hover{transform:translateY(-3px);border-color:rgba(0,200,255,0.4);
-      box-shadow:0 12px 40px rgba(0,150,210,0.15)}
-    .product-header{padding:1.5rem 1.5rem 1.25rem;border-bottom:1px solid var(--border);
-      display:flex;align-items:flex-start;gap:1rem}
-    .product-icon{width:40px;height:40px;flex-shrink:0;
-      background:rgba(0,200,255,0.1);border:1px solid rgba(0,200,255,0.25);
-      border-radius:8px;display:flex;align-items:center;justify-content:center}
-    .product-icon svg{width:20px;height:20px}
-    .product-title{flex:1;min-width:0}
-    .product-title h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;line-height:1.2;margin-bottom:0.2rem}
-    .product-title p{font-size:0.78rem;color:var(--gray);line-height:1.4}
-    .status-badge{flex-shrink:0;font-size:0.63rem;font-weight:500;
-      letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
-    .status-active{background:rgba(0,200,100,0.12);color:#4ADE80;border:1px solid rgba(0,200,100,0.25)}
-    .status-legacy{background:rgba(255,165,0,0.1);color:#FB923C;border:1px solid rgba(255,165,0,0.2)}
-    .lang-grid{padding:1.25rem 1.5rem 1.5rem;
-      display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:0.6rem}
-    .lang-btn{display:flex;align-items:center;gap:0.45rem;padding:0.5rem 0.65rem;
-      background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
-      border-radius:6px;text-decoration:none;color:var(--lgray);font-size:0.77rem;
-      font-family:'DM Sans',sans-serif;transition:all 0.2s ease;cursor:pointer}
-    .lang-btn:hover{background:rgba(0,200,255,0.08);border-color:rgba(0,200,255,0.3);color:#fff}
-    .lang-btn .flag{font-size:0.95rem;flex-shrink:0;line-height:1}
-    .lang-name{line-height:1.2}
-    .lang-code{font-size:0.63rem;color:var(--gray);display:block;margin-top:1px}
-    .lang-btn.soon{opacity:0.4;cursor:default;pointer-events:none}
-    .coming-soon{padding:0 1.5rem 1.25rem;font-size:0.72rem;color:var(--gray);font-style:italic}
-    footer{border-top:1px solid var(--border);padding:2.5rem 0;
-      display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start}
-    .footer-brand{display:flex;align-items:center;gap:0.85rem;margin-bottom:0.75rem}
-    .footer-brand img{width:26px;height:26px;opacity:0.7}
-    .footer-brand span{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;color:var(--lgray)}
-    .footer-info{font-size:0.75rem;color:var(--gray);line-height:1.9}
-    .footer-info a{color:var(--cyan);text-decoration:none}
-    .footer-right{text-align:right;font-size:0.72rem;color:var(--gray);line-height:2}
-    @media(max-width:768px){
-      .page{padding:0 1.25rem}
-      header{flex-wrap:wrap}
-      .header-right{width:100%;text-align:left;margin-top:0.5rem}
-      .products{grid-template-columns:1fr}
-      footer{grid-template-columns:1fr}
-      .footer-right{text-align:left}
+
+    /* Subtle radial glow — brand accent, no imagery required */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% -5%, rgba(39, 177, 250, 0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 40% at 90% 80%, rgba(0, 113, 202, 0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero__inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero__content {
+      max-width: 580px;
+    }
+
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.625rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero__eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--blue-digital);
+      border-radius: 2px;
+    }
+
+    .hero__heading {
+      font-size: clamp(2.5rem, 5.5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      color: var(--white);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero__heading em {
+      font-style: normal;
+      color: var(--blue-digital);
+    }
+
+    .hero__tagline {
+      font-family: var(--font-heading);
+      font-size: clamp(1.125rem, 2vw, 1.375rem);
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 0.875rem;
+      letter-spacing: 0.01em;
+    }
+
+    .hero__body {
+      font-size: 1.0625rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 2.25rem;
+      max-width: 460px;
+    }
+
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.875rem;
+      align-items: center;
+    }
+
+    .hero__visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero__logo-mark {
+      width: clamp(180px, 22vw, 280px);
+      height: auto;
+      opacity: 0.92;
+      filter: drop-shadow(0 0 48px rgba(39, 177, 250, 0.35));
+    }
+
+    @media (max-width: 900px) {
+      .hero__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero__content {
+        max-width: 100%;
+        order: 2;
+      }
+      .hero__visual {
+        order: 1;
+      }
+      .hero__eyebrow {
+        justify-content: center;
+      }
+      .hero__body {
+        max-width: 100%;
+      }
+      .hero__actions {
+        justify-content: center;
+      }
+    }
+
+    /* ── Stats Strip ──────────────────────────────────────────────────────── */
+    .stats-strip {
+      background: rgba(255, 255, 255, 0.04);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-block: 2.75rem;
+    }
+
+    .stats-strip__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .stats-strip__item {
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* Dividers between stat items */
+    .stats-strip__item + .stats-strip__item {
+      border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stats-strip__number {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 3.5vw, 2.875rem);
+      font-weight: 800;
+      color: var(--blue-digital);
+      line-height: 1;
+    }
+
+    .stats-strip__label {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.65);
+      margin-top: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .stats-strip__source {
+      font-size: 0.7rem;
+      color: rgba(255, 255, 255, 0.35);
+      margin-top: 0.25rem;
+    }
+
+    @media (max-width: 700px) {
+      .stats-strip__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .stats-strip__item + .stats-strip__item {
+        border-left: none;
+      }
+      .stats-strip__item:nth-child(odd) {
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .stats-strip__item:nth-child(1),
+      .stats-strip__item:nth-child(2) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 1.5rem;
+      }
+      .stats-strip__item:nth-child(3),
+      .stats-strip__item:nth-child(4) {
+        padding-top: 1.5rem;
+      }
+    }
+
+    /* ── Dual CTA ─────────────────────────────────────────────────────────── */
+    .dual-cta {
+      padding-block: var(--space-2xl);
+    }
+
+    .dual-cta__heading {
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .dual-cta__subhead {
+      text-align: center;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      font-size: 1.0625rem;
+    }
+
+    .dual-cta__cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .cta-card {
+      border-radius: var(--radius-lg);
+      padding: 3rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .cta-card--surgeon {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .cta-card--patient {
+      background: var(--white);
+      color: var(--navy);
+      border: 2px solid #E5ECF4;
+    }
+
+    .cta-card__icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cta-card--surgeon .cta-card__icon {
+      background: rgba(39, 177, 250, 0.15);
+      color: var(--blue-digital);
+    }
+
+    .cta-card--patient .cta-card__icon {
+      background: rgba(0, 113, 202, 0.1);
+      color: var(--blue);
+    }
+
+    .cta-card__label {
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .cta-card--surgeon .cta-card__label { color: var(--blue-digital); }
+    .cta-card--patient .cta-card__label { color: var(--blue); }
+
+    .cta-card__heading {
+      font-family: var(--font-heading);
+      font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .cta-card__body {
+      font-size: 0.9375rem;
+      line-height: 1.65;
+    }
+
+    .cta-card--surgeon .cta-card__body { color: rgba(255, 255, 255, 0.7); }
+    .cta-card--patient .cta-card__body { color: var(--text-muted); }
+
+    .cta-card__links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .cta-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-family: var(--font-heading);
+      font-size: 0.875rem;
+      font-weight: 600;
+      transition: gap var(--transition);
+    }
+
+    .cta-card--surgeon .cta-card__link { color: var(--blue-digital); }
+    .cta-card--patient .cta-card__link { color: var(--blue); }
+
+    .cta-card__link:hover { gap: 0.625rem; }
+
+    @media (max-width: 700px) {
+      .dual-cta__cards {
+        grid-template-columns: 1fr;
+      }
+      .cta-card {
+        padding: 2.25rem 1.75rem;
+      }
+    }
+
+    /* ── Products ─────────────────────────────────────────────────────────── */
+    .products {
+      padding-block: var(--space-2xl);
+      background: #F7FAFD;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-header__eyebrow {
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header__heading {
+      color: var(--navy);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-header__body {
+      color: var(--text-muted);
+      font-size: 1.0625rem;
+      max-width: 560px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 1px solid #E5ECF4;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 200ms ease, transform 200ms ease;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 8px 40px rgba(13, 27, 42, 0.09);
+      transform: translateY(-3px);
+    }
+
+    .product-card__flag {
+      background: var(--navy);
+      padding: 0.5rem 1.125rem;
+    }
+
+    .product-card__flag-text {
+      font-family: var(--font-heading);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue-digital);
+    }
+
+    .product-card__body {
+      padding: 1.5rem 1.25rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+
+    .product-card__name {
+      font-family: var(--font-heading);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .product-card__desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+      flex: 1;
+    }
+
+    .product-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-family: var(--font-heading);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      color: var(--blue);
+      margin-top: 0.5rem;
+      transition: gap var(--transition);
+    }
+
+    .product-card__link:hover { gap: 0.625rem; }
+
+    @media (max-width: 900px) {
+      .products-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 500px) {
+      .products-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Trust / Social Proof ─────────────────────────────────────────────── */
+    .trust {
+      padding-block: var(--space-2xl);
+    }
+
+    .trust__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .trust__content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .trust__heading { color: var(--white); }
+
+    .trust__body {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 1.0625rem;
+      line-height: 1.7;
+    }
+
+    .trust__metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .trust__metric {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .trust__metric-value {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--blue-digital);
+      line-height: 1;
+    }
+
+    .trust__metric-label {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .trust__studies {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .trust__study-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      border-radius: var(--radius-lg);
+      padding: 1.375rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .trust__study-label {
+      font-family: var(--font-heading);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue-digital);
+    }
+
+    .trust__study-stat {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .trust__study-body {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .trust__inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    /* ── Nav ──────────────────────────────────────────────────────────────── */
+    .site-nav__logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.625rem;
+    }
+
+    .site-nav__wordmark {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    /* ── Footer Layout ────────────────────────────────────────────────────── */
+    .footer__inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #E0E6ED;
+      margin-bottom: 2rem;
+    }
+
+    .footer__col-heading {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 1rem;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.625rem;
+    }
+
+    .footer__links a {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+
+    .footer__links a:hover { color: var(--blue); }
+
+    .footer__brand-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .footer__logo {
+      height: 40px;
+      width: auto;
+    }
+
+    .footer__tagline {
+      font-family: var(--font-heading);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+
+    .footer__address {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .footer__address a {
+      color: var(--blue);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .footer__bottom {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer__legal {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+    }
+
+    .footer__legal-links {
+      display: flex;
+      gap: 1.25rem;
+    }
+
+    .footer__legal-links a {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+
+    .footer__legal-links a:hover { color: var(--blue); }
+
+    @media (max-width: 900px) {
+      .footer__inner {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer__inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    /* ── SVG icons inline ─────────────────────────────────────────────────── */
+    .icon {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.125em;
+      fill: currentColor;
     }
   </style>
 </head>
+
 <body>
-<div class="bg-layer"></div>
-<div class="page">
 
-<header>
-  <img src="data:image/png;base64,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" alt="GraMedica" />
-  <div class="brand-block">
-    <h1>GraMedica</h1>
-    <p>Restoring motion. Restoring life.</p>
-  </div>
-  <div class="header-right">
-    <a href="https://www.gramedica.com">gramedica.com</a><br>
-    Graham Medical Technologies<br>Rochester, MI USA
-  </div>
-</header>
+  <!-- ════════════════════════════════════════════════════════════════════
+       NAVIGATION — dark context
+       Logo: logo-nav.png (SkruBluGlo square on dark — horizontal variant
+       needed at /assets/images/logo-nav-hz.png when available)
+       ════════════════════════════════════════════════════════════════════ -->
+  <nav class="site-nav" aria-label="Main navigation">
+    <div class="container">
+      <div class="site-nav__inner">
 
-<section class="hero">
-  <div class="hero-label">Digital IFU Library</div>
-  <h2>Instructions<br><span>for Use</span></h2>
-  <p>Select your product and preferred language below to download the current Instructions for Use document. Documents are provided in PDF format and require a PDF viewer.</p>
-</section>
+        <a href="/" class="site-nav__logo" aria-label="GraMedica home">
+          <div class="site-nav__logo-wrap">
+            <img src="/assets/images/logo-nav.png"
+                 alt="GraMedica"
+                 width="36" height="36" />
+            <span class="site-nav__wordmark">GraMedica</span>
+          </div>
+        </a>
 
-<div class="notice">
-  <strong>&#9888; Platform Test &mdash; Not for Clinical Use.</strong>&nbsp;
-  This page is currently in configuration testing. IFU documents linked here are placeholder files only.
-  Final approved IFU content will be published upon QA sign-off and document control release.
-</div>
+        <ul class="site-nav__links" role="list">
+          <li><a href="/products/">Products</a></li>
+          <li><a href="/for-doctors/">For Surgeons</a></li>
+          <li><a href="/for-patients/">For Patients</a></li>
+          <li><a href="/distributors/">Distributors</a></li>
+          <li><a href="/about-us/">About</a></li>
+          <li><a href="/ifu/">IFU</a></li>
+        </ul>
 
-<div class="section-label">Active Devices</div>
-<div class="products">
-  <div class="product-card">
-    <div class="product-header">
-      <div class="product-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L17 6V14L10 18L3 14V6L10 2Z" stroke="#00C8FF" stroke-width="1.5"/></svg></div>
-      <div class="product-title"><h3>HyProCure&reg; I</h3><p>Extra-Osseous TaloTarsal Stabilization</p></div>
-      <span class="status-badge status-active">Active</span>
-    </div>
-    <div class="lang-grid">
-      <a class="lang-btn" href="https://gramedica.sharepoint.com/:b:/s/IFU/IQCmHZkX_W5wTqCRyW-nny_gARSanImbXNrwdusWFoIH6n0?e=vxTY1B" target="_blank" rel="noopener"><span class="flag">&#127482;&#127480;</span><span class="lang-name">English<span class="lang-code">EN</span></span></a>
-      <a class="lang-btn" href="https://gramedica.sharepoint.com/:b:/s/IFU/IQBtv9i3wrAcSrtRt5bfJIY1AWiHYenZN8uM8C7w2R_U9Uk?e=7bdjJ5" target="_blank" rel="noopener"><span class="flag">&#127466;&#127480;</span><span class="lang-name">Espa&ntilde;ol<span class="lang-code">ES</span></span></a>
-      <div class="lang-btn soon"><span class="flag">&#127465;&#127466;</span><span class="lang-name">Deutsch<span class="lang-code">DE &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127477;&#127481;</span><span class="lang-name">Portugu&ecirc;s<span class="lang-code">PT &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127464;&#127475;</span><span class="lang-name">&#20013;&#25991; &#31616;<span class="lang-code">ZH-CN &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127481;&#127484;</span><span class="lang-name">&#20013;&#25991; &#32321;<span class="lang-code">ZH-TW &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127481;&#127469;</span><span class="lang-name">Thai<span class="lang-code">TH &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127479;&#127476;</span><span class="lang-name">Rom&acirc;n&#259;<span class="lang-code">RO &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127480;&#127462;</span><span class="lang-name">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;<span class="lang-code">AR &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127480;&#127466;</span><span class="lang-name">Svenska<span class="lang-code">SV &mdash; Soon</span></span></div>
-    </div>
-    <div class="coming-soon">Additional language translations pending QA release.</div>
-  </div>
-  <div class="product-card">
-    <div class="product-header">
-      <div class="product-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L17 6V14L10 18L3 14V6L10 2Z" stroke="#00C8FF" stroke-width="1.5"/></svg></div>
-      <div class="product-title"><h3>HyProCure&reg; II</h3><p>Extra-Osseous TaloTarsal Stabilization</p></div>
-      <span class="status-badge status-active">Active</span>
-    </div>
-    <div class="lang-grid">
-      <a class="lang-btn" href="LINK_HPC2_EN" target="_blank" rel="noopener"><span class="flag">&#127482;&#127480;</span><span class="lang-name">English<span class="lang-code">EN</span></span></a>
-      <a class="lang-btn" href="LINK_HPC2_ES" target="_blank" rel="noopener"><span class="flag">&#127466;&#127480;</span><span class="lang-name">Espa&ntilde;ol<span class="lang-code">ES</span></span></a>
-      <div class="lang-btn soon"><span class="flag">&#127465;&#127466;</span><span class="lang-name">Deutsch<span class="lang-code">DE &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127477;&#127481;</span><span class="lang-name">Portugu&ecirc;s<span class="lang-code">PT &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127464;&#127475;</span><span class="lang-name">&#20013;&#25991; &#31616;<span class="lang-code">ZH-CN &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127481;&#127484;</span><span class="lang-name">&#20013;&#25991; &#32321;<span class="lang-code">ZH-TW &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127481;&#127469;</span><span class="lang-name">Thai<span class="lang-code">TH &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127479;&#127476;</span><span class="lang-name">Rom&acirc;n&#259;<span class="lang-code">RO &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127480;&#127462;</span><span class="lang-name">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;<span class="lang-code">AR &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127480;&#127466;</span><span class="lang-name">Svenska<span class="lang-code">SV &mdash; Soon</span></span></div>
-    </div>
-    <div class="coming-soon">Additional language translations pending QA release.</div>
-  </div>
-</div>
+        <div class="site-nav__cta">
+          <a href="/contact-us/" class="btn btn--digital" style="font-size:0.875rem;padding:0.625rem 1.25rem;">
+            Contact Us
+          </a>
+        </div>
 
-<div class="section-label">Legacy Devices &mdash; In-Field Reference</div>
-<div class="products">
-  <div class="product-card">
-    <div class="product-header">
-      <div class="product-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" stroke="#8A9BB0" stroke-width="1.5"/></svg></div>
-      <div class="product-title"><h3>OsteoWedge&reg;</h3><p>Reference documentation for devices in the field</p></div>
-      <span class="status-badge status-legacy">Legacy</span>
-    </div>
-    <div class="lang-grid">
-      <div class="lang-btn soon"><span class="flag">&#127482;&#127480;</span><span class="lang-name">English<span class="lang-code">EN &mdash; Pending</span></span></div>
-    </div>
-    <div class="coming-soon">Pending QA inventory confirmation.</div>
-  </div>
-  <div class="product-card">
-    <div class="product-header">
-      <div class="product-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" stroke="#8A9BB0" stroke-width="1.5"/></svg></div>
-      <div class="product-title"><h3>OptiToe&reg;</h3><p>Reference documentation for devices in the field</p></div>
-      <span class="status-badge status-legacy">Legacy</span>
-    </div>
-    <div class="lang-grid">
-      <div class="lang-btn soon"><span class="flag">&#127482;&#127480;</span><span class="lang-name">English<span class="lang-code">EN &mdash; Pending</span></span></div>
-    </div>
-    <div class="coming-soon">Pending QA inventory confirmation.</div>
-  </div>
-  <div class="product-card">
-    <div class="product-header">
-      <div class="product-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" stroke="#8A9BB0" stroke-width="1.5"/></svg></div>
-      <div class="product-title"><h3>K-Wire</h3><p>Reference documentation for devices in the field</p></div>
-      <span class="status-badge status-legacy">Legacy</span>
-    </div>
-    <div class="lang-grid">
-      <div class="lang-btn soon"><span class="flag">&#127482;&#127480;</span><span class="lang-name">English<span class="lang-code">EN &mdash; Pending</span></span></div>
-    </div>
-    <div class="coming-soon">Pending QA inventory confirmation.</div>
-  </div>
-</div>
+        <button class="site-nav__toggle" aria-label="Open menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+            <rect y="4"  width="22" height="2" rx="1" fill="currentColor"/>
+            <rect y="10" width="22" height="2" rx="1" fill="currentColor"/>
+            <rect y="16" width="22" height="2" rx="1" fill="currentColor"/>
+          </svg>
+        </button>
 
-<footer>
-  <div>
-    <div class="footer-brand">
-      <img src="data:image/png;base64,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" alt="GraMedica" />
-      <span>GraMedica</span>
+      </div>
     </div>
-    <div class="footer-info">
-      Graham Medical Technologies d/b/a GraMedica<br>
-      236 Mill Street, Rochester, MI 48307 USA<br>
-      <a href="https://www.gramedica.com">www.gramedica.com</a><br>
-      GraMedica&reg; and HyProCure&reg; are registered trademarks of Graham Medical Technologies.
-    </div>
-  </div>
-  <div class="footer-right">
-    Rx Only &mdash; Prescription Use Only<br>
-    For single use only<br>
-    &copy; 2026 Graham Medical Technologies
-  </div>
-</footer>
+  </nav>
 
-</div>
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       HERO — dark context (#0D1B2A)
+       Two-blue rule: accent = #27B1FA (digital blue, dark bg)
+       Tagline verbatim per CLAUDE.md. No autoplay video.
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="hero section--dark">
+    <div class="container">
+      <div class="hero__inner">
+
+        <div class="hero__content">
+
+          <div class="hero__eyebrow">
+            <span class="label label--digital">Extra-Osseous TaloTarsal Stabilization</span>
+          </div>
+
+          <h1 class="hero__heading">
+            Restoring motion.<br />
+            <em>Restoring life.</em>
+          </h1>
+
+          <p class="hero__tagline">The world's leading foot stabilization system.</p>
+
+          <p class="hero__body">
+            HyProCure® has helped over 100,000 patients worldwide walk pain-free
+            since 2004 — with a 99% implant success rate and surgery that takes
+            less than 30 minutes.
+          </p>
+
+          <div class="hero__actions">
+            <a href="/for-doctors/" class="btn btn--digital btn--lg">
+              I'm a Surgeon
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+            <a href="/for-patients/" class="btn btn--outline-light btn--lg">
+              I'm a Patient
+            </a>
+          </div>
+
+        </div>
+
+        <div class="hero__visual" aria-hidden="true">
+          <!-- SkruBluGlo — approved for dark/digital contexts -->
+          <img class="hero__logo-mark"
+               src="/assets/images/logo-dark-digital.png"
+               alt=""
+               width="280" height="280" />
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       STATS STRIP — dark context, Class A stats (QA-approved per CLAUDE.md)
+       ════════════════════════════════════════════════════════════════════ -->
+  <div class="stats-strip section--dark">
+    <div class="container">
+      <div class="stats-strip__grid">
+
+        <div class="stats-strip__item">
+          <div class="stats-strip__number">100,000<span style="font-size:0.55em;vertical-align:0.2em;">+</span></div>
+          <div class="stats-strip__label">Implants worldwide</div>
+          <div class="stats-strip__source">Since 2004</div>
+        </div>
+
+        <div class="stats-strip__item">
+          <div class="stats-strip__number">99<span style="font-size:0.55em;vertical-align:0.2em;">%</span></div>
+          <div class="stats-strip__label">Implant success rate</div>
+          <div class="stats-strip__source">8-year Orthopaedic Surgery study, 2025</div>
+        </div>
+
+        <div class="stats-strip__item">
+          <div class="stats-strip__number">5.2<span style="font-size:0.55em;vertical-align:0.2em;">%</span></div>
+          <div class="stats-strip__label">Removal rate</div>
+          <div class="stats-strip__source">vs. up to 58% for competing implants</div>
+        </div>
+
+        <div class="stats-strip__item">
+          <div class="stats-strip__number">&lt;30<span style="font-size:0.55em;vertical-align:0.2em;">min</span></div>
+          <div class="stats-strip__label">Surgical procedure</div>
+          <div class="stats-strip__source">Immediate weight-bearing in post-op shoe</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       DUAL CTA — light context (#FFFFFF)
+       Two-blue rule: accent = #0071CA (primary blue, light bg)
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="dual-cta section--light">
+    <div class="container">
+
+      <p class="label label--blue dual-cta__heading" style="margin-bottom:0.75rem;">Where would you like to start?</p>
+      <h2 class="dual-cta__heading" style="color:var(--navy);">Who are you?</h2>
+      <p class="dual-cta__subhead">GraMedica serves both medical professionals and patients. Tell us where you're coming from.</p>
+
+      <div class="dual-cta__cards">
+
+        <!-- Surgeon path — navy card (dark context) -->
+        <div class="cta-card cta-card--surgeon">
+          <div class="cta-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <span class="cta-card__label">For Medical Professionals</span>
+          <h3 class="cta-card__heading">I'm a Surgeon or Healthcare Provider</h3>
+          <p class="cta-card__body">
+            Access clinical education, surgical technique guides, peer-reviewed studies,
+            and the tools you need to offer HyProCure to your patients.
+          </p>
+          <div class="cta-card__links">
+            <a href="/for-doctors/hyprocure-education/" class="cta-card__link">
+              HyProCure Surgical Education
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/for-doctors/physician-endorsement/" class="cta-card__link">
+              Physician Endorsement Program
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/distributors/" class="cta-card__link">
+              Distributor Information
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Patient path — white card (light context) -->
+        <div class="cta-card cta-card--patient">
+          <div class="cta-card__icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+            </svg>
+          </div>
+          <span class="cta-card__label">For Patients</span>
+          <h3 class="cta-card__heading">I'm a Patient or Caregiver</h3>
+          <p class="cta-card__body">
+            Learn about your foot condition, understand how HyProCure can help,
+            read real patient success stories, and find a qualified surgeon near you.
+          </p>
+          <div class="cta-card__links">
+            <a href="/for-patients/" class="cta-card__link">
+              Learn About HyProCure
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/for-patients/success-stories/" class="cta-card__link">
+              Patient Success Stories
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/for-patients/find-a-doctor/" class="cta-card__link">
+              Find a Surgeon
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       PRODUCTS — light (slightly tinted) context
+       Two-blue rule: accent = #0071CA (primary blue, light bg)
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="products">
+    <div class="container">
+
+      <div class="section-header">
+        <p class="label label--blue section-header__eyebrow">Our Portfolio</p>
+        <h2 class="section-header__heading">Products Built for Better Outcomes</h2>
+        <p class="section-header__body">
+          From our flagship stabilization system to precision surgical instruments,
+          every GraMedica product is engineered for clinical performance.
+        </p>
+      </div>
+
+      <div class="products-grid">
+
+        <div class="product-card">
+          <div class="product-card__flag">
+            <span class="product-card__flag-text">Primary Revenue &bull; Active</span>
+          </div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">HyProCure® I</h3>
+            <p class="product-card__desc">
+              Extra-Osseous TaloTarsal Stabilization device. A titanium sinus tarsi stent
+              that corrects misalignment of the ankle bone over the heel bone. Over
+              100,000 implants placed worldwide since 2004.
+            </p>
+            <a href="/products/hyprocure/" class="product-card__link">
+              Learn More
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__flag">
+            <span class="product-card__flag-text">Second Generation &bull; Active</span>
+          </div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">HyProCure® II</h3>
+            <p class="product-card__desc">
+              The next generation of HyProCure — refined engineering for even greater
+              precision, stability, and long-term patient outcomes in foot and
+              ankle stabilization.
+            </p>
+            <a href="/products/hyprocure-ii/" class="product-card__link">
+              Learn More
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__flag">
+            <span class="product-card__flag-text">Active</span>
+          </div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Osteo-Wedge®</h3>
+            <p class="product-card__desc">
+              Open Wedge Bone Locking System. Designed to provide stable, reliable
+              fixation for bone wedge procedures in foot and ankle surgery.
+            </p>
+            <a href="/products/osteo-wedge/" class="product-card__link">
+              Learn More
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-card__flag">
+            <span class="product-card__flag-text">Active</span>
+          </div>
+          <div class="product-card__body">
+            <h3 class="product-card__name">Opti-Toe®</h3>
+            <p class="product-card__desc">
+              Lesser toe reconstruction device. Engineered for precision alignment
+              and durable fixation in lesser toe correction procedures.
+            </p>
+            <a href="/products/opti-toe/" class="product-card__link">
+              Learn More
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div style="margin-top:2rem;">
+        <a href="/products/" class="btn btn--outline-dark">
+          View Full Product Portfolio
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       TRUST / CLINICAL PROOF — dark context (#0D1B2A)
+       Two-blue rule: accent = #27B1FA (digital blue, dark bg)
+       Class A content — stats are QA-approved verbatim per CLAUDE.md
+       ════════════════════════════════════════════════════════════════════ -->
+  <section class="trust section--dark">
+    <div class="container">
+      <div class="trust__inner">
+
+        <div class="trust__content">
+          <p class="label label--digital">Clinical Evidence</p>
+          <h2 class="trust__heading">20+ Years of Proven Results</h2>
+          <p class="trust__body">
+            HyProCure is backed by over 100 published studies — 25 of them
+            peer-reviewed — across multiple countries and patient populations.
+            The data consistently supports what surgeons and patients already know:
+            HyProCure works.
+          </p>
+
+          <div class="trust__metrics">
+            <div class="trust__metric">
+              <span class="trust__metric-value">100+</span>
+              <span class="trust__metric-label">Published studies</span>
+            </div>
+            <div class="trust__metric">
+              <span class="trust__metric-value">25</span>
+              <span class="trust__metric-label">Peer-reviewed</span>
+            </div>
+            <div class="trust__metric">
+              <span class="trust__metric-value">0.1%</span>
+              <span class="trust__metric-label">Complaint rate</span>
+            </div>
+            <div class="trust__metric">
+              <span class="trust__metric-value">2 wks</span>
+              <span class="trust__metric-label">Return to full activity</span>
+            </div>
+          </div>
+
+          <div style="margin-top:0.75rem;">
+            <a href="/for-doctors/hyprocure-education/" class="btn btn--digital">
+              Review Clinical Data
+            </a>
+          </div>
+        </div>
+
+        <div class="trust__studies">
+          <div class="trust__study-card">
+            <span class="trust__study-label">8-Year Study — Orthopaedic Surgery, 2025</span>
+            <span class="trust__study-stat">99% Implant Success Rate</span>
+            <p class="trust__study-body">
+              Longitudinal study tracking HyProCure outcomes over eight years
+              demonstrates sustained stabilization with a 99% success rate.
+            </p>
+          </div>
+          <div class="trust__study-card">
+            <span class="trust__study-label">Comparative Analysis</span>
+            <span class="trust__study-stat">5.2% vs. up to 58% Removal Rate</span>
+            <p class="trust__study-body">
+              HyProCure's removal rate is significantly lower than competing
+              sinus tarsi implants, reducing revision burden for surgeons and patients.
+            </p>
+          </div>
+          <div class="trust__study-card">
+            <span class="trust__study-label">Global Reach</span>
+            <span class="trust__study-stat">100,000+ Patients Worldwide</span>
+            <p class="trust__study-body">
+              Performed across multiple countries and continents, with a complaint
+              rate as low as 0.1% — a testament to quality and consistency.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════
+       FOOTER — gray context (#F2F4F7)
+       Logo: logo-footer.png (white BG / black logo variant)
+       ════════════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+
+      <div class="footer__inner">
+
+        <!-- Brand col -->
+        <div class="footer__brand-block">
+          <img class="footer__logo"
+               src="/assets/images/logo-footer.png"
+               alt="GraMedica"
+               width="40" height="40" />
+          <p class="footer__tagline">Restoring motion. Restoring life.</p>
+          <p class="footer__address">
+            Graham Medical Technologies, LLC<br />
+            236 Mill Street — Mailbox #10<br />
+            Rochester, MI 48307<br />
+            <a href="tel:+15866779600">+1 586-677-9600</a>
+          </p>
+        </div>
+
+        <!-- Products col -->
+        <div>
+          <p class="footer__col-heading">Products</p>
+          <ul class="footer__links" role="list">
+            <li><a href="/products/hyprocure/">HyProCure® I</a></li>
+            <li><a href="/products/hyprocure-ii/">HyProCure® II</a></li>
+            <li><a href="/products/osteo-wedge/">Osteo-Wedge®</a></li>
+            <li><a href="/products/opti-toe/">Opti-Toe®</a></li>
+            <li><a href="/products/instruments/">Instruments</a></li>
+          </ul>
+        </div>
+
+        <!-- Learn col -->
+        <div>
+          <p class="footer__col-heading">Learn</p>
+          <ul class="footer__links" role="list">
+            <li><a href="/for-doctors/">For Surgeons</a></li>
+            <li><a href="/for-patients/">For Patients</a></li>
+            <li><a href="/for-patients/success-stories/">Success Stories</a></li>
+            <li><a href="/for-patients/find-a-doctor/">Find a Surgeon</a></li>
+            <li><a href="/ifu/">Instructions for Use</a></li>
+          </ul>
+        </div>
+
+        <!-- Company col -->
+        <div>
+          <p class="footer__col-heading">Company</p>
+          <ul class="footer__links" role="list">
+            <li><a href="/about-us/">About GraMedica</a></li>
+            <li><a href="/distributors/">Distributors</a></li>
+            <li><a href="/events/">Events</a></li>
+            <li><a href="/contact-us/">Contact Us</a></li>
+            <li>
+              <a href="https://www.linkedin.com/company/gramedica"
+                 target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer__bottom">
+        <p class="footer__legal">
+          &copy; 2026 Graham Medical Technologies, LLC. All rights reserved.
+          HyProCure&reg; is a registered trademark.
+          Rx Only — Prescription Use Only.
+        </p>
+        <div class="footer__legal-links">
+          <a href="/privacy/">Privacy Policy</a>
+          <a href="/terms/">Terms of Use</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
 </body>
 </html>
-
