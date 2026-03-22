@@ -4,598 +4,789 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>GraMedica — Site Version Review</title>
+  <title>GraMedica — Restoring Motion. Restoring Life.</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
 
   <style>
-    body {
-      background: #0a1015;
-      min-height: 100vh;
+    /* ── Page-specific styles ─────────────────────────────────────────── */
+
+    /* Utility bar */
+    .utility-bar {
+      display: none;
+      justify-content: flex-end;
+      align-items: center;
+      gap: var(--space-md);
+      padding: 0.5rem 2.5rem;
+      background: #F2F4F6;
+      border-bottom: 1px solid rgba(193, 199, 212, 0.1);
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+    }
+    @media (min-width: 768px) {
+      .utility-bar { display: flex; }
+    }
+    .utility-bar a {
+      color: var(--text-muted);
+      transition: color var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 500;
+    }
+    .utility-bar a:hover { color: var(--blue); }
+
+    /* Nav override — white/clinical variant */
+    .site-nav--white {
+      background: var(--white);
+      border-bottom: 1px solid #E5ECF4;
+      box-shadow: 0 1px 3px rgba(13, 27, 42, 0.04);
+    }
+    .site-nav--white .site-nav__links a {
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+    .site-nav--white .site-nav__links a:hover,
+    .site-nav--white .site-nav__links a.active {
+      color: var(--blue);
+    }
+    .site-nav--white .site-nav__links a.active {
+      border-bottom: 2px solid var(--blue);
+      padding-bottom: 2px;
+      font-weight: 600;
     }
 
-    /* ── Header ───────────────────────────────────────────────────────── */
-    .review-header {
-      background: var(--navy);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 1.25rem 0;
-    }
-
-    .review-header__inner {
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #162a3f 100%);
+      position: relative;
+      overflow: hidden;
+      min-height: 680px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
     }
-
-    .review-header__logo {
-      height: 36px;
-      width: auto;
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      align-items: center;
+      padding-block: var(--space-2xl);
     }
-
-    .review-header__badge {
-      background: rgba(39,177,250,0.12);
-      border: 1px solid rgba(39,177,250,0.25);
-      color: var(--blue-digital);
+    @media (min-width: 1024px) {
+      .hero__inner { grid-template-columns: 1fr 1fr; }
+    }
+    .hero__tagline {
       font-family: var(--font-heading);
-      font-size: 0.75rem;
+      font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 0.375rem 0.875rem;
-      border-radius: 100px;
-    }
-
-    /* ── Hero ─────────────────────────────────────────────────────────── */
-    .review-hero {
-      padding: 5rem 0 3.5rem;
-      text-align: center;
-    }
-
-    .review-hero__eyebrow {
-      font-family: var(--font-heading);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--blue-digital);
-      margin-bottom: 1.25rem;
-    }
-
-    .review-hero__heading {
-      font-family: var(--font-heading);
-      font-size: clamp(2.25rem, 4vw, 3.5rem);
-      font-weight: 800;
       color: var(--white);
       line-height: 1.1;
       letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
     }
-
-    .review-hero__sub {
-      font-size: 1.0625rem;
-      color: rgba(255,255,255,0.55);
-      max-width: 560px;
-      margin: 0 auto 0.75rem;
+    .hero__sub {
+      font-size: 1.25rem;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 480px;
       line-height: 1.7;
     }
-
-    .review-hero__date {
-      font-family: var(--font-heading);
-      font-size: 0.8125rem;
-      color: rgba(255,255,255,0.3);
-      letter-spacing: 0.04em;
+    .hero__image-wrap {
+      display: none;
+      position: relative;
+    }
+    @media (min-width: 1024px) {
+      .hero__image-wrap { display: block; }
+    }
+    .hero__image-wrap::before {
+      content: '';
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 500px;
+      height: 500px;
+      background: rgba(0, 113, 202, 0.15);
+      border-radius: 50%;
+      filter: blur(120px);
+    }
+    .hero__image {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      filter: drop-shadow(0 24px 48px rgba(0, 0, 0, 0.3));
     }
 
-    /* ── Version Cards ────────────────────────────────────────────────── */
-    .versions {
-      padding: 1rem 0 5rem;
+    /* Stats strip */
+    .stats-strip {
+      background: var(--white);
+      padding-block: var(--space-xl);
+      border-bottom: 1px solid #E5ECF4;
     }
-
-    .versions__grid {
+    .stats-strip__grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+    }
+    @media (min-width: 768px) {
+      .stats-strip__grid { grid-template-columns: repeat(4, 1fr); gap: 0; }
+    }
+    .stats-strip__item {
+      text-align: center;
+      padding-inline: var(--space-sm);
+    }
+    @media (min-width: 768px) {
+      .stats-strip__item:not(:last-child) {
+        border-right: 1px solid #E5ECF4;
+      }
+    }
+    .stats-strip__number {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+    .stats-strip__label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
     }
 
-    .version-card {
-      background: #0D1B2A;
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 16px;
+    /* Dual CTA */
+    .dual-cta {
+      background: #F8F9FB;
+      padding-block: var(--space-2xl);
+    }
+    .dual-cta__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+    @media (min-width: 768px) {
+      .dual-cta__grid { grid-template-columns: 1fr 1fr; }
+    }
+    .cta-card {
+      position: relative;
       overflow: hidden;
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
       display: flex;
       flex-direction: column;
-      transition: border-color 200ms ease, box-shadow 200ms ease;
+      justify-content: space-between;
+      min-height: 360px;
+      transition: transform var(--transition), box-shadow var(--transition);
     }
-
-    .version-card:hover {
-      border-color: rgba(39,177,250,0.3);
-      box-shadow: 0 12px 48px rgba(0,0,0,0.4);
+    .cta-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(13, 27, 42, 0.1);
     }
-
-    .version-card--v2 {
-      border-color: rgba(39,177,250,0.2);
+    .cta-card--surgeon {
+      background: var(--navy);
+      color: var(--white);
     }
-
-    /* Preview frame — iframe of the actual page */
-    .version-card__preview {
-      position: relative;
-      background: #050d14;
-      overflow: hidden;
-      height: 420px;
+    .cta-card--patient {
+      background: var(--white);
+      color: var(--text-dark);
+      border: 2px solid rgba(0, 113, 202, 0.2);
     }
-
-    .version-card__iframe {
-      width: 1200px;
-      height: 860px;
-      border: none;
-      transform: scale(0.5);
-      transform-origin: top left;
-      pointer-events: none;
-      display: block;
+    .cta-card__title {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
     }
-
-    /* Fallback screenshot label when iframe blocked */
-    .version-card__preview-overlay {
+    .cta-card--patient .cta-card__title { color: var(--blue); }
+    .cta-card__desc {
+      font-size: 1.0625rem;
+      line-height: 1.65;
+      max-width: 300px;
+    }
+    .cta-card--surgeon .cta-card__desc { color: rgba(255, 255, 255, 0.6); }
+    .cta-card--patient .cta-card__desc { color: var(--text-muted); }
+    .cta-card__link {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform var(--transition);
+    }
+    .cta-card:hover .cta-card__link { transform: translateX(8px); }
+    .cta-card--surgeon .cta-card__link { color: var(--white); }
+    .cta-card--surgeon .cta-card__link .material-symbols-outlined { color: var(--blue-digital); }
+    .cta-card--patient .cta-card__link { color: var(--blue); }
+    .cta-card__watermark {
       position: absolute;
-      inset: 0;
+      bottom: -10px;
+      right: -10px;
+      font-family: var(--font-heading);
+      font-size: 12rem;
+      font-weight: 800;
+      pointer-events: none;
+      user-select: none;
+    }
+    .cta-card--surgeon .cta-card__watermark { color: rgba(255, 255, 255, 0.03); }
+    .cta-card--patient .cta-card__watermark { color: rgba(0, 113, 202, 0.03); }
+
+    /* Product grid */
+    .products {
+      background: var(--white);
+      padding-block: var(--space-2xl);
+    }
+    .products__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: var(--space-xl);
+    }
+    .products__header h2 {
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .products__accent-bar {
+      height: 5px;
+      width: 5rem;
+      background: var(--blue);
+      border-radius: 3px;
+    }
+    .products__view-all {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--blue);
+    }
+    .products__view-all:hover { text-decoration: underline; }
+    .products__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+    @media (min-width: 600px) {
+      .products__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (min-width: 1024px) {
+      .products__grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    .product-card {
+      padding: var(--space-md);
+      border: 1px solid rgba(113, 119, 131, 0.15);
+      border-radius: var(--radius);
+      transition: background var(--transition);
+    }
+    .product-card:hover { background: #F8F9FB; }
+    .product-card__image {
+      aspect-ratio: 1;
+      background: var(--white);
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      gap: 0.75rem;
-      color: rgba(255,255,255,0.15);
-      font-family: var(--font-heading);
+      margin-bottom: var(--space-lg);
+      overflow: hidden;
+      border-radius: var(--radius);
+    }
+    .product-card__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: transform 300ms ease;
+    }
+    .product-card:hover .product-card__image img { transform: scale(1.05); }
+    .product-card h4 {
+      font-size: 1.125rem;
+      margin-bottom: 0.5rem;
+    }
+    .product-card__desc {
       font-size: 0.875rem;
-      pointer-events: none;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: var(--space-md);
     }
-
-    /* Tag strip above iframe */
-    .version-card__tag {
-      position: absolute;
-      top: 1rem;
-      left: 1rem;
-      z-index: 2;
-      font-family: var(--font-heading);
-      font-size: 0.6875rem;
+    .product-card__link {
+      font-size: 0.875rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.8rem;
-      border-radius: 4px;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
     }
 
-    .version-card--v1 .version-card__tag {
-      background: rgba(13,27,42,0.9);
-      color: rgba(255,255,255,0.5);
-      border: 1px solid rgba(255,255,255,0.15);
+    /* Evidence section */
+    .evidence {
+      background: #F8F9FB;
+      padding-block: var(--space-2xl);
     }
-
-    .version-card--v2 .version-card__tag {
-      background: rgba(39,177,250,0.15);
-      color: var(--blue-digital);
-      border: 1px solid rgba(39,177,250,0.3);
+    .evidence__intro { margin-bottom: var(--space-xl); }
+    .evidence__intro h2 { margin-bottom: var(--space-sm); letter-spacing: -0.02em; }
+    .evidence__intro p {
+      color: var(--text-muted);
+      font-size: 1.0625rem;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.7;
     }
-
-    /* Card body */
-    .version-card__body {
-      padding: 2rem 2rem 1.5rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+    .evidence__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
     }
-
-    .version-card__version {
-      font-family: var(--font-heading);
-      font-size: 0.6875rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    @media (min-width: 768px) {
+      .evidence__grid { grid-template-columns: repeat(3, 1fr); }
     }
-
-    .version-card--v1 .version-card__version { color: rgba(255,255,255,0.35); }
-    .version-card--v2 .version-card__version { color: var(--blue-digital); }
-
-    .version-card__name {
-      font-family: var(--font-heading);
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--white);
-      line-height: 1.2;
-      letter-spacing: -0.01em;
+    .evidence-card {
+      background: var(--white);
+      padding: var(--space-xl);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 12px 40px rgba(13, 27, 42, 0.06);
+      border-top: 4px solid var(--blue);
+      text-align: center;
+      transition: transform var(--transition);
     }
-
-    .version-card__desc {
+    .evidence-card:hover { transform: translateY(-6px); }
+    .evidence-card .material-symbols-outlined {
+      font-size: 3rem;
+      color: var(--blue);
+      margin-bottom: var(--space-md);
+    }
+    .evidence-card h4 {
+      font-size: 1.375rem;
+      margin-bottom: var(--space-sm);
+    }
+    .evidence-card p {
       font-size: 0.9375rem;
-      color: rgba(255,255,255,0.55);
+      color: var(--text-muted);
       line-height: 1.65;
     }
 
-    /* What's new / what's in this version */
-    .version-card__list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      padding-top: 0.25rem;
+    /* Trust bar */
+    .trust-bar {
+      background: var(--white);
+      padding-block: var(--space-xl);
+      border-top: 1px solid #E5ECF4;
+      border-bottom: 1px solid #E5ECF4;
     }
-
-    .version-card__item {
+    .trust-bar__inner {
       display: flex;
-      align-items: flex-start;
-      gap: 0.625rem;
-      font-size: 0.875rem;
-      line-height: 1.5;
-    }
-
-    .version-card--v1 .version-card__item { color: rgba(255,255,255,0.5); }
-    .version-card--v2 .version-card__item { color: rgba(255,255,255,0.75); }
-
-    .version-card__item-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      flex-shrink: 0;
-      margin-top: 0.45rem;
-    }
-
-    .version-card--v1 .version-card__item-dot { background: rgba(255,255,255,0.25); }
-    .version-card--v2 .version-card__item-dot { background: var(--blue-digital); }
-
-    .version-card__footer {
-      padding: 0 2rem 2rem;
-      display: flex;
-      gap: 0.875rem;
       flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-lg) var(--space-2xl);
     }
-
-    /* ── Diff Section ─────────────────────────────────────────────────── */
-    .diff {
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 3.5rem 0 5rem;
+    .trust-bar__item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
     }
-
-    .diff__heading {
+    .trust-bar__item .material-symbols-outlined { color: var(--blue); }
+    .trust-bar__item span:last-child {
       font-family: var(--font-heading);
-      font-size: clamp(1.25rem, 2vw, 1.625rem);
       font-weight: 700;
-      color: var(--white);
-      margin-bottom: 2rem;
-      text-align: center;
-      letter-spacing: -0.01em;
+      color: var(--text-dark);
+    }
+    .trust-bar__divider {
+      display: none;
+      width: 1px;
+      height: 1.5rem;
+      background: #E5ECF4;
+    }
+    @media (min-width: 768px) {
+      .trust-bar__divider { display: block; }
     }
 
-    .diff__table {
-      background: var(--navy);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .diff__row {
+    /* Footer overrides for 4-col layout */
+    .footer-grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+      margin-bottom: var(--space-xl);
     }
-
-    .diff__row:last-child { border-bottom: none; }
-
-    .diff__cell {
-      padding: 1rem 1.25rem;
-      font-size: 0.875rem;
-      border-right: 1px solid rgba(255,255,255,0.06);
-      line-height: 1.5;
+    @media (min-width: 768px) {
+      .footer-grid { grid-template-columns: repeat(4, 1fr); }
     }
-
-    .diff__cell:last-child { border-right: none; }
-
-    .diff__row--header .diff__cell {
-      font-family: var(--font-heading);
-      font-size: 0.6875rem;
+    .footer-col h5 {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-dark);
+      margin-bottom: var(--space-md);
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.75rem; }
+    .footer-col a {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .footer-col a:hover { color: var(--blue); }
+    .footer__rx {
+      background: rgba(0, 113, 202, 0.08);
+      padding: 1rem;
+      border-radius: var(--radius);
+      font-size: 0.625rem;
+      font-weight: 700;
+      color: var(--blue);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      background: rgba(255,255,255,0.03);
-      padding: 0.875rem 1.25rem;
+      line-height: 1.6;
     }
-
-    .diff__cell--feature { color: rgba(255,255,255,0.6); }
-    .diff__cell--v1 { color: rgba(255,255,255,0.35); text-align: center; }
-    .diff__cell--v2 { color: var(--blue-digital); text-align: center; font-weight: 600; }
-
-    /* ── Note at bottom ───────────────────────────────────────────────── */
-    .review-note {
-      text-align: center;
-      padding: 2rem 0 4rem;
-      border-top: 1px solid rgba(255,255,255,0.06);
+    .footer__bottom {
+      padding-top: var(--space-lg);
+      border-top: 1px solid #D0D6E0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      font-size: 0.75rem;
+      color: var(--text-muted);
     }
-
-    .review-note p {
-      font-size: 0.875rem;
-      color: rgba(255,255,255,0.3);
-      line-height: 1.7;
-      max-width: 520px;
-      margin: 0 auto;
+    @media (min-width: 768px) {
+      .footer__bottom { flex-direction: row; justify-content: space-between; align-items: center; }
     }
-
-    @media (max-width: 860px) {
-      .versions__grid {
-        grid-template-columns: 1fr;
-      }
-      .version-card__preview {
-        height: 260px;
-      }
-      .version-card__iframe {
-        width: 960px;
-        height: 700px;
-        transform: scale(0.4);
-      }
-      .diff__row {
-        grid-template-columns: 1fr 0.6fr 0.6fr;
-      }
+    .footer__bottom-links {
+      display: flex;
+      gap: var(--space-md);
     }
-
-    @media (max-width: 600px) {
-      .diff__row {
-        grid-template-columns: 1fr;
-      }
-      .diff__row--header { display: none; }
-      .diff__cell {
-        border-right: none;
-        border-top: 1px solid rgba(255,255,255,0.06);
-      }
-      .diff__cell:first-child { border-top: none; }
+    .footer__bottom-links a {
+      color: var(--text-muted);
+      transition: color var(--transition);
     }
+    .footer__bottom-links a:hover { color: var(--blue); }
+    .social-links {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: var(--space-md);
+    }
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background: var(--white);
+      border: 1px solid rgba(113, 119, 131, 0.15);
+      border-radius: 50%;
+      transition: background var(--transition), color var(--transition);
+    }
+    .social-link:hover {
+      background: var(--blue);
+      color: var(--white);
+    }
+    .social-link svg { width: 18px; height: 18px; fill: currentColor; }
   </style>
 </head>
 
 <body>
 
-  <!-- ════════════════════════════════════════════════════════════════════
-       HEADER
-       ════════════════════════════════════════════════════════════════════ -->
-  <header class="review-header">
-    <div class="container">
-      <div class="review-header__inner">
-        <img src="/assets/images/v2/logo-nav-hz.png"
-             class="review-header__logo"
-             alt="GraMedica"
-             height="36"
-             style="height:36px;width:auto;" />
-        <span class="review-header__badge">Internal Review — Not for Distribution</span>
-      </div>
+  <!-- ══ UTILITY BAR ═══════════════════════════════════════════════════ -->
+  <div class="utility-bar">
+    <div style="display:flex;align-items:center;gap:1.5rem;max-width:var(--max-width);margin:0 auto;width:100%;justify-content:flex-end;">
+      <a href="tel:+15866779600" style="display:flex;align-items:center;gap:0.4rem;">
+        <span class="material-symbols-outlined" style="font-size:0.875rem;">call</span>
+        +1 586-677-9600
+      </a>
+      <a href="/for-doctors/">Surgeon Hub</a>
+      <a href="/for-patients/">Patient Hub</a>
     </div>
+  </div>
+
+  <!-- ══ NAVIGATION ════════════════════════════════════════════════════ -->
+  <header class="site-nav site-nav--white" style="position:sticky;top:0;z-index:100;">
+    <nav class="site-nav__inner container">
+      <a href="/" class="site-nav__logo">
+        <img src="/assets/images/logo-nav-hz.png" alt="GraMedica" height="36" style="height:36px;width:auto;" />
+      </a>
+      <div class="site-nav__links">
+        <a href="/products/" class="active">Products</a>
+        <a href="/for-doctors/">For Surgeons</a>
+        <a href="/for-patients/">For Patients</a>
+        <a href="/about-us/">About Us</a>
+        <a href="/contact-us/">Contact</a>
+      </div>
+      <div class="site-nav__cta">
+        <a href="/contact-us/" class="btn btn--primary" style="padding:0.5rem 1.25rem;font-size:0.8125rem;">Contact Us</a>
+        <button class="site-nav__toggle" aria-label="Open menu">
+          <span class="material-symbols-outlined">menu</span>
+        </button>
+      </div>
+    </nav>
   </header>
 
+  <main>
 
-  <!-- ════════════════════════════════════════════════════════════════════
-       HERO
-       ════════════════════════════════════════════════════════════════════ -->
-  <div class="review-hero">
-    <div class="container">
-      <p class="review-hero__eyebrow">GraMedica Website Redesign</p>
-      <h1 class="review-hero__heading">V1 vs. V2 — Side by Side</h1>
-      <p class="review-hero__sub">
-        Review both homepage versions below. V2 introduces real product photography
-        from OneDrive assets, a split-hero layout, product spotlight sections, and
-        a generation comparison table.
-      </p>
-      <p class="review-hero__date">March 2026 · gramedica.com</p>
-    </div>
-  </div>
-
-
-  <!-- ════════════════════════════════════════════════════════════════════
-       VERSION CARDS
-       ════════════════════════════════════════════════════════════════════ -->
-  <section class="versions">
-    <div class="container">
-      <div class="versions__grid">
-
-        <!-- V1 -->
-        <div class="version-card version-card--v1">
-
-          <div class="version-card__preview">
-            <div class="version-card__tag">V1 — Current</div>
-            <iframe class="version-card__iframe"
-                    src="/v1/"
-                    title="V1 Homepage preview"
-                    loading="lazy"
-                    tabindex="-1"
-                    aria-hidden="true"></iframe>
-          </div>
-
-          <div class="version-card__body">
-            <p class="version-card__version">Version 1 · CSS / Design System Build</p>
-            <h2 class="version-card__name">Homepage V1</h2>
-            <p class="version-card__desc">
-              Design system build — establishes typography, color tokens, nav, hero,
-              stats strip, dual-CTA, product grid, trust section, and footer.
-              All CSS, no product photography.
+    <!-- ══ HERO ══════════════════════════════════════════════════════════ -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero__inner">
+          <div>
+            <h1 class="hero__tagline">Restoring motion.<br />Restoring life.</h1>
+            <p class="hero__sub" style="margin-top:var(--space-md);">
+              Pioneering extra-osseous TaloTarsal stabilization since 2004.
             </p>
-            <div class="version-card__list">
-              <div class="version-card__item">
-                <div class="version-card__item-dot"></div>
-                Brand design system and global CSS established
-              </div>
-              <div class="version-card__item">
-                <div class="version-card__item-dot"></div>
-                Hero: navy bg, SkruBluGlo mark, tagline, dual CTAs
-              </div>
-              <div class="version-card__item">
-                <div class="version-card__item-dot"></div>
-                Stats strip, product grid (all 4 products), trust/evidence section
-              </div>
-              <div class="version-card__item">
-                <div class="version-card__item-dot"></div>
-                No photography — purely typographic layout
-              </div>
+            <div style="margin-top:var(--space-lg);">
+              <a href="/products/hyprocure/" class="btn btn--digital btn--lg">
+                Explore HyProCure
+                <span class="material-symbols-outlined" style="font-size:1.25rem;">arrow_forward</span>
+              </a>
             </div>
           </div>
+          <div class="hero__image-wrap">
+            <img src="/assets/images/v2/hyp1-hero.jpg"
+                 alt="HyProCure extra-osseous TaloTarsal stabilization device"
+                 class="hero__image" />
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="version-card__footer">
-            <a href="/v1/" class="btn btn--outline-light" target="_blank" rel="noopener">
-              Open V1
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <!-- ══ STATS STRIP ═══════════════════════════════════════════════════ -->
+    <!-- CLASS A — QA APPROVED — DO NOT ALTER -->
+    <section class="stats-strip">
+      <div class="container">
+        <div class="stats-strip__grid">
+          <div class="stats-strip__item">
+            <div class="stats-strip__number">100,000+</div>
+            <div class="stats-strip__label">Implants Worldwide</div>
+          </div>
+          <div class="stats-strip__item">
+            <div class="stats-strip__number">99%</div>
+            <div class="stats-strip__label">Success Rate</div>
+          </div>
+          <div class="stats-strip__item">
+            <div class="stats-strip__number">5.2%</div>
+            <div class="stats-strip__label">Removal Rate</div>
+          </div>
+          <div class="stats-strip__item">
+            <div class="stats-strip__number">&lt;30 min</div>
+            <div class="stats-strip__label">Surgery Time</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ DUAL CTA ══════════════════════════════════════════════════════ -->
+    <section class="dual-cta">
+      <div class="container">
+        <div class="dual-cta__grid">
+          <a href="/for-doctors/" class="cta-card cta-card--surgeon">
+            <div>
+              <h3 class="cta-card__title">I'm a Surgeon</h3>
+              <p class="cta-card__desc">Access clinical data, surgical techniques, and order inventory through our Physician Hub.</p>
+            </div>
+            <span class="cta-card__link">
+              Physician Hub
+              <span class="material-symbols-outlined">arrow_right_alt</span>
+            </span>
+            <span class="cta-card__watermark">MD</span>
+          </a>
+          <a href="/for-patients/" class="cta-card cta-card--patient">
+            <div>
+              <h3 class="cta-card__title">I'm a Patient</h3>
+              <p class="cta-card__desc">Discover how the HyProCure stent can help correct misaligned feet and eliminate chronic pain.</p>
+            </div>
+            <span class="cta-card__link">
+              Patient Hub
+              <span class="material-symbols-outlined">arrow_right_alt</span>
+            </span>
+            <span class="cta-card__watermark">PT</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ PRODUCT GRID ══════════════════════════════════════════════════ -->
+    <section class="products">
+      <div class="container">
+        <div class="products__header">
+          <div>
+            <h2>Our Products</h2>
+            <div class="products__accent-bar"></div>
+          </div>
+          <a href="/products/" class="products__view-all">View All Portfolio</a>
+        </div>
+        <div class="products__grid">
+
+          <div class="product-card">
+            <div class="product-card__image">
+              <img src="/assets/images/v2/hyp1-sq.jpg" alt="HyProCure I sinus tarsi stent" />
+            </div>
+            <h4>HyProCure&reg; I</h4>
+            <p class="product-card__desc">The original extra-osseous TaloTarsal stabilization device.</p>
+            <a href="/products/hyprocure/" class="product-card__link">
+              Learn More <span class="material-symbols-outlined" style="font-size:1rem;">chevron_right</span>
+            </a>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card__image">
+              <img src="/assets/images/v2/hyp2-sq.jpg" alt="HyProCure II sinus tarsi stent" />
+            </div>
+            <h4>HyProCure&reg; II</h4>
+            <p class="product-card__desc">Second generation — advanced engineering for optimal stabilization.</p>
+            <a href="/products/hyprocure-ii/" class="product-card__link">
+              Learn More <span class="material-symbols-outlined" style="font-size:1rem;">chevron_right</span>
+            </a>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card__image">
+              <img src="/assets/images/v2/hyp-compare.jpg" alt="Osteo-Wedge bone locking system" />
+            </div>
+            <h4>Osteo-Wedge&reg;</h4>
+            <p class="product-card__desc">Open Wedge Bone Locking System for precision alignment.</p>
+            <a href="/products/osteo-wedge/" class="product-card__link">
+              Learn More <span class="material-symbols-outlined" style="font-size:1rem;">chevron_right</span>
+            </a>
+          </div>
+
+          <div class="product-card">
+            <div class="product-card__image">
+              <img src="/assets/images/v2/hyp2-coin.jpg" alt="Opti-Toe lesser toe reconstruction device" />
+            </div>
+            <h4>Opti-Toe&reg;</h4>
+            <p class="product-card__desc">Next-generation solution for lesser toe reconstruction.</p>
+            <a href="/products/opti-toe/" class="product-card__link">
+              Learn More <span class="material-symbols-outlined" style="font-size:1rem;">chevron_right</span>
             </a>
           </div>
 
         </div>
+      </div>
+    </section>
 
-        <!-- V2 -->
-        <div class="version-card version-card--v2">
-
-          <div class="version-card__preview">
-            <div class="version-card__tag">V2 — New</div>
-            <iframe class="version-card__iframe"
-                    src="/v2/"
-                    title="V2 Homepage preview"
-                    loading="lazy"
-                    tabindex="-1"
-                    aria-hidden="true"></iframe>
+    <!-- ══ EVIDENCE SECTION ══════════════════════════════════════════════ -->
+    <!-- CLASS A — QA APPROVED — DO NOT ALTER -->
+    <section class="evidence">
+      <div class="container">
+        <div class="evidence__intro text-center">
+          <h2>Clinical Evidence</h2>
+          <p>Decades of data supporting the safety and efficacy of GraMedica technologies.</p>
+        </div>
+        <div class="evidence__grid">
+          <div class="evidence-card">
+            <span class="material-symbols-outlined">description</span>
+            <h4>100+ Studies</h4>
+            <p>25 peer-reviewed publications backing clinical claims and surgical outcomes.</p>
           </div>
-
-          <div class="version-card__body">
-            <p class="version-card__version">Version 2 · Photo-Rich Content Build</p>
-            <h2 class="version-card__name">Homepage V2</h2>
-            <p class="version-card__desc">
-              Full content build using OneDrive product photography.
-              HyProCure I &amp; II product spotlight sections, generation comparison table,
-              clinical evidence block, and updated brand assets (V2 logos).
-            </p>
-            <div class="version-card__list">
-              <div class="version-card__item">
-                <div class="version-card__item-dot"></div>
-                Split-screen hero with real HyProCure product photography
-              </div>
-              <div class="version-card__item">
-                <div class="version-card__item-dot"></div>
-                Full-width alternating product spotlight: HyProCure I &amp; II
-              </div>
-              <div class="version-card__item">
-                <div class="version-card__item-dot"></div>
-                HyProCure I vs. II generation comparison table
-              </div>
-              <div class="version-card__item">
-                <div class="version-card__item-dot"></div>
-                Clinical evidence section with QA-approved Class A stats
-              </div>
-              <div class="version-card__item">
-                <div class="version-card__item-dot"></div>
-                Brand Assets V2 logos (WhtBlkHz-V2-17, BlkWhtHz-V2-4)
-              </div>
-              <div class="version-card__item">
-                <div class="version-card__item-dot"></div>
-                Announcement bar, floating stat badge, about/mission strip
-              </div>
-            </div>
+          <div class="evidence-card">
+            <span class="material-symbols-outlined">verified</span>
+            <h4>99% Success</h4>
+            <p>8-year Orthopaedic Surgery study demonstrating unprecedented implant success rate.</p>
           </div>
+          <div class="evidence-card">
+            <span class="material-symbols-outlined">trending_down</span>
+            <h4>5.2% Removal</h4>
+            <p>Significantly lower removal rate vs. up to 58% for competing implants.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="version-card__footer">
-            <a href="/v2/" class="btn btn--digital" target="_blank" rel="noopener">
-              Open V2
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <!-- ══ TRUST BAR ═════════════════════════════════════════════════════ -->
+    <section class="trust-bar">
+      <div class="container">
+        <div class="trust-bar__inner">
+          <div class="trust-bar__item">
+            <span class="material-symbols-outlined">calendar_today</span>
+            <span>20+ Years</span>
+          </div>
+          <div class="trust-bar__item">
+            <span class="material-symbols-outlined">public</span>
+            <span>60+ Countries</span>
+          </div>
+          <div class="trust-bar__item">
+            <span class="material-symbols-outlined">group</span>
+            <span>100,000+ Patients</span>
+          </div>
+          <div class="trust-bar__divider"></div>
+          <div class="trust-bar__item">
+            <span class="material-symbols-outlined">check_circle</span>
+            <span style="text-transform:uppercase;letter-spacing:-0.02em;">FDA Cleared</span>
+          </div>
+          <div class="trust-bar__item">
+            <span class="material-symbols-outlined">verified</span>
+            <span style="text-transform:uppercase;letter-spacing:-0.02em;">CE Marked</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-col">
+          <a href="/">
+            <img src="/assets/images/logo-footer-hz.png" alt="GraMedica"
+                 style="height:32px;width:auto;max-width:180px;margin-bottom:var(--space-sm);" />
+          </a>
+          <p style="font-size:0.875rem;color:var(--text-muted);line-height:1.6;margin-bottom:0.5rem;">
+            236 Mill Street<br />
+            Rochester, MI 48307<br />
+            United States
+          </p>
+          <p style="font-size:0.875rem;font-weight:700;color:var(--blue);">
+            +1 586-677-9600
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Solutions</h5>
+          <ul>
+            <li><a href="/products/hyprocure/">HyProCure&reg; I &amp; II</a></li>
+            <li><a href="/products/osteo-wedge/">Osteo-Wedge&reg;</a></li>
+            <li><a href="/products/opti-toe/">Opti-Toe&reg;</a></li>
+            <li><a href="/products/instruments/">Instruments</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <ul>
+            <li><a href="/for-doctors/">Surgeon Hub</a></li>
+            <li><a href="/for-patients/">Patient Hub</a></li>
+            <li><a href="/for-doctors/hyprocure-education/">Clinical Evidence</a></li>
+            <li><a href="/ifu/">Instructions for Use</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Connect</h5>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/company/gramedica" class="social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <a href="https://www.youtube.com/@GraMedicaFootInnovations" class="social-link" target="_blank" rel="noopener" aria-label="YouTube">
+              <svg viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
             </a>
           </div>
-
+          <div class="footer__rx">
+            Rx Only. Caution: Federal law (USA) restricts these devices to sale by or on the order of a physician.
+          </div>
         </div>
 
       </div>
-    </div>
-  </section>
 
-
-  <!-- ════════════════════════════════════════════════════════════════════
-       DIFF TABLE
-       ════════════════════════════════════════════════════════════════════ -->
-  <section class="diff">
-    <div class="container">
-      <h2 class="diff__heading">What Changed V1 → V2</h2>
-
-      <div class="diff__table" role="table" aria-label="V1 vs V2 feature comparison">
-
-        <div class="diff__row diff__row--header" role="row">
-          <div class="diff__cell" role="columnheader">Feature</div>
-          <div class="diff__cell" role="columnheader">V1</div>
-          <div class="diff__cell" role="columnheader">V2</div>
+      <div class="footer__bottom">
+        <div>&copy; 2026 Graham Medical Technologies, LLC. All Rights Reserved.</div>
+        <div class="footer__bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+          <a href="#">Accessibility</a>
+          <span style="color:var(--blue);font-weight:600;">Rx Only</span>
         </div>
-
-        <div class="diff__row" role="row">
-          <div class="diff__cell diff__cell--feature" role="cell">Product photography</div>
-          <div class="diff__cell diff__cell--v1" role="cell">None</div>
-          <div class="diff__cell diff__cell--v2" role="cell">✓ HyProCure I &amp; II photos</div>
-        </div>
-
-        <div class="diff__row" role="row">
-          <div class="diff__cell diff__cell--feature" role="cell">Hero layout</div>
-          <div class="diff__cell diff__cell--v1" role="cell">Full-width copy + logo mark</div>
-          <div class="diff__cell diff__cell--v2" role="cell">✓ Split: copy left / photo right</div>
-        </div>
-
-        <div class="diff__row" role="row">
-          <div class="diff__cell diff__cell--feature" role="cell">Product sections</div>
-          <div class="diff__cell diff__cell--v1" role="cell">4-up card grid (all products)</div>
-          <div class="diff__cell diff__cell--v2" role="cell">✓ Full-width spotlight: HyP I &amp; II</div>
-        </div>
-
-        <div class="diff__row" role="row">
-          <div class="diff__cell diff__cell--feature" role="cell">Product comparison</div>
-          <div class="diff__cell diff__cell--v1" role="cell">None</div>
-          <div class="diff__cell diff__cell--v2" role="cell">✓ HyProCure I vs. II table</div>
-        </div>
-
-        <div class="diff__row" role="row">
-          <div class="diff__cell diff__cell--feature" role="cell">Brand logo</div>
-          <div class="diff__cell diff__cell--v1" role="cell">Old nav assets</div>
-          <div class="diff__cell diff__cell--v2" role="cell">✓ Brand Assets V2 logos</div>
-        </div>
-
-        <div class="diff__row" role="row">
-          <div class="diff__cell diff__cell--feature" role="cell">Announcement bar</div>
-          <div class="diff__cell diff__cell--v1" role="cell">None</div>
-          <div class="diff__cell diff__cell--v2" role="cell">✓ Blue awareness strip</div>
-        </div>
-
-        <div class="diff__row" role="row">
-          <div class="diff__cell diff__cell--feature" role="cell">Clinical evidence section</div>
-          <div class="diff__cell diff__cell--v1" role="cell">Dark stats strip (embedded)</div>
-          <div class="diff__cell diff__cell--v2" role="cell">✓ Dedicated evidence section + study cards</div>
-        </div>
-
-        <div class="diff__row" role="row">
-          <div class="diff__cell diff__cell--feature" role="cell">About / brand strip</div>
-          <div class="diff__cell diff__cell--v1" role="cell">None</div>
-          <div class="diff__cell diff__cell--v2" role="cell">✓ Mission section + glow mark</div>
-        </div>
-
-        <div class="diff__row" role="row">
-          <div class="diff__cell diff__cell--feature" role="cell">Footer logo</div>
-          <div class="diff__cell diff__cell--v1" role="cell">Legacy asset</div>
-          <div class="diff__cell diff__cell--v2" role="cell">✓ BlkWhtHz-V2-4.png</div>
-        </div>
-
       </div>
     </div>
-  </section>
-
-
-  <!-- ════════════════════════════════════════════════════════════════════
-       FOOTER NOTE
-       ════════════════════════════════════════════════════════════════════ -->
-  <div class="review-note">
-    <div class="container">
-      <p>
-        This page is for internal review only. Not indexed, not linked from
-        the live site. V2 currently includes HyProCure I &amp; II only —
-        Osteo-Wedge, Opti-Toe, and instruments to be added in a future pass.
-        Once V2 is approved, <code style="font-size:0.8em;color:rgba(255,255,255,0.4);">/v2/index.html</code>
-        replaces <code style="font-size:0.8em;color:rgba(255,255,255,0.4);">/index.html</code>.
-      </p>
-    </div>
-  </div>
+  </footer>
 
 </body>
 </html>

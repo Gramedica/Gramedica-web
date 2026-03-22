@@ -1,225 +1,551 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GraMedica — Instructions for Use</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Digital IFU Library — GraMedica</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="/css/global.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" />
+
   <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --navy:#08111F;--navy2:#0D1B2E;--navy3:#122340;
-      --cyan:#00C8FF;--gray:#8A9BB0;--lgray:#C8D6E5;
-      --border:rgba(0,200,255,0.15);
+    /* ── Page-specific styles ─────────────────────────────────────────── */
+
+    /* Nav — white/clinical variant */
+    .ifu-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid #E5ECF4;
+      box-shadow: 0 1px 3px rgba(13, 27, 42, 0.04);
     }
-    body{background:var(--navy);color:#fff;font-family:'DM Sans',sans-serif;font-weight:300;min-height:100vh;overflow-x:hidden}
-    .bg-layer{position:fixed;inset:0;z-index:0;pointer-events:none;
-      background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(0,150,210,0.18) 0%,transparent 65%),
-                 radial-gradient(ellipse 50% 40% at 80% 80%,rgba(0,100,180,0.10) 0%,transparent 60%),var(--navy)}
-    .page{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:0 2rem}
-    header{padding:2.5rem 0 2rem;display:flex;align-items:center;gap:1.25rem;border-bottom:1px solid var(--border)}
-    header img{width:48px;height:48px;filter:drop-shadow(0 0 10px rgba(0,200,255,0.5))}
-    .brand-block h1{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;line-height:1}
-    .brand-block p{font-size:0.73rem;color:var(--cyan);letter-spacing:0.12em;text-transform:uppercase;margin-top:4px}
-    .header-right{margin-left:auto;text-align:right;font-size:0.72rem;color:var(--gray);line-height:1.8}
-    .header-right a{color:var(--cyan);text-decoration:none}
-    .hero{padding:4rem 0 2.5rem}
-    .hero-label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;
-      letter-spacing:0.14em;text-transform:uppercase;color:var(--cyan);margin-bottom:1.25rem}
-    .hero-label::before{content:'';display:block;width:28px;height:1px;background:var(--cyan)}
-    .hero h2{font-family:'Syne',sans-serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.1;margin-bottom:1rem}
-    .hero h2 span{color:var(--cyan)}
-    .hero p{max-width:580px;color:var(--lgray);font-size:1rem;line-height:1.75}
-    .notice{margin:1.5rem 0 3rem;padding:0.85rem 1.25rem;
-      border:1px solid rgba(255,193,7,0.3);border-left:3px solid #FFC107;
-      background:rgba(255,193,7,0.05);border-radius:4px;
-      font-size:0.82rem;color:#FFDA6A;line-height:1.6}
-    .notice strong{color:#FFC107}
-    .section-label{font-family:'Syne',sans-serif;font-size:0.7rem;font-weight:700;
-      letter-spacing:0.16em;text-transform:uppercase;color:var(--cyan);
-      margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem}
-    .section-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
-    .products{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:4rem}
-    .product-card{background:linear-gradient(135deg,rgba(13,27,46,0.95),rgba(18,35,64,0.9));
-      border:1px solid var(--border);border-radius:12px;overflow:hidden;
-      transition:transform 0.3s ease,border-color 0.3s ease,box-shadow 0.3s ease}
-    .product-card:hover{transform:translateY(-3px);border-color:rgba(0,200,255,0.4);
-      box-shadow:0 12px 40px rgba(0,150,210,0.15)}
-    .product-header{padding:1.5rem 1.5rem 1.25rem;border-bottom:1px solid var(--border);
-      display:flex;align-items:flex-start;gap:1rem}
-    .product-icon{width:40px;height:40px;flex-shrink:0;
-      background:rgba(0,200,255,0.1);border:1px solid rgba(0,200,255,0.25);
-      border-radius:8px;display:flex;align-items:center;justify-content:center}
-    .product-icon svg{width:20px;height:20px}
-    .product-title{flex:1;min-width:0}
-    .product-title h3{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:700;line-height:1.2;margin-bottom:0.2rem}
-    .product-title p{font-size:0.78rem;color:var(--gray);line-height:1.4}
-    .status-badge{flex-shrink:0;font-size:0.63rem;font-weight:500;
-      letter-spacing:0.08em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
-    .status-active{background:rgba(0,200,100,0.12);color:#4ADE80;border:1px solid rgba(0,200,100,0.25)}
-    .status-legacy{background:rgba(255,165,0,0.1);color:#FB923C;border:1px solid rgba(255,165,0,0.2)}
-    .lang-grid{padding:1.25rem 1.5rem 1.5rem;
-      display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:0.6rem}
-    .lang-btn{display:flex;align-items:center;gap:0.45rem;padding:0.5rem 0.65rem;
-      background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);
-      border-radius:6px;text-decoration:none;color:var(--lgray);font-size:0.77rem;
-      font-family:'DM Sans',sans-serif;transition:all 0.2s ease;cursor:pointer}
-    .lang-btn:hover{background:rgba(0,200,255,0.08);border-color:rgba(0,200,255,0.3);color:#fff}
-    .lang-btn .flag{font-size:0.95rem;flex-shrink:0;line-height:1}
-    .lang-name{line-height:1.2}
-    .lang-code{font-size:0.63rem;color:var(--gray);display:block;margin-top:1px}
-    .lang-btn.soon{opacity:0.4;cursor:default;pointer-events:none}
-    .coming-soon{padding:0 1.5rem 1.25rem;font-size:0.72rem;color:var(--gray);font-style:italic}
-    footer{border-top:1px solid var(--border);padding:2.5rem 0;
-      display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start}
-    .footer-brand{display:flex;align-items:center;gap:0.85rem;margin-bottom:0.75rem}
-    .footer-brand img{width:26px;height:26px;opacity:0.7}
-    .footer-brand span{font-family:'Syne',sans-serif;font-weight:700;font-size:0.95rem;color:var(--lgray)}
-    .footer-info{font-size:0.75rem;color:var(--gray);line-height:1.9}
-    .footer-info a{color:var(--cyan);text-decoration:none}
-    .footer-right{text-align:right;font-size:0.72rem;color:var(--gray);line-height:2}
-    @media(max-width:768px){
-      .page{padding:0 1.25rem}
-      header{flex-wrap:wrap}
-      .header-right{width:100%;text-align:left;margin-top:0.5rem}
-      .products{grid-template-columns:1fr}
-      footer{grid-template-columns:1fr}
-      .footer-right{text-align:left}
+    .ifu-nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      height: 64px;
+    }
+    .ifu-nav__logo img {
+      height: 34px;
+      width: auto;
+    }
+    .ifu-nav__links {
+      display: none;
+      align-items: center;
+      gap: var(--space-lg);
+    }
+    @media (min-width: 768px) {
+      .ifu-nav__links { display: flex; }
+    }
+    .ifu-nav__links a {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .ifu-nav__links a:hover { color: var(--blue); }
+    .ifu-nav__links a.active {
+      color: var(--blue);
+      font-weight: 600;
+      border-bottom: 2px solid var(--blue);
+      padding-bottom: 2px;
+    }
+
+    /* Warning banner */
+    .warning-banner {
+      background: #FFF3CD;
+      border-bottom: 1px solid #FFE69C;
+      padding: 0.75rem 0;
+    }
+    .warning-banner__inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      color: #664D03;
+      font-weight: 500;
+      font-size: 0.875rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* Hero */
+    .ifu-hero {
+      background: var(--white);
+      padding: var(--space-2xl) 0;
+      border-bottom: 1px solid rgba(193, 199, 212, 0.1);
+    }
+    .ifu-hero__eyebrow {
+      display: inline-block;
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--blue);
+      margin-bottom: var(--space-sm);
+    }
+    .ifu-hero h1 {
+      margin-bottom: var(--space-md);
+      letter-spacing: -0.02em;
+    }
+    .ifu-hero p {
+      font-size: 1.0625rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      max-width: 640px;
+    }
+
+    /* Section headings */
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-lg);
+    }
+    .section-heading h2 {
+      font-size: clamp(1.5rem, 3vw, 1.875rem);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .section-heading__line {
+      flex-grow: 1;
+      height: 2px;
+      background: rgba(0, 113, 202, 0.15);
+      position: relative;
+    }
+    .section-heading__line::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 6rem;
+      background: var(--blue);
+    }
+
+    /* Device cards */
+    .device-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+    @media (min-width: 1024px) {
+      .device-cards { grid-template-columns: 1fr 1fr; }
+    }
+    .device-card {
+      background: var(--white);
+      padding: var(--space-lg);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 1px 4px rgba(13, 27, 42, 0.04);
+      border: 1px solid rgba(193, 199, 212, 0.08);
+      transition: box-shadow 300ms ease;
+    }
+    .device-card:hover {
+      box-shadow: 0 8px 24px rgba(13, 27, 42, 0.08);
+    }
+    .device-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--space-md);
+    }
+    .device-card__name {
+      font-family: var(--font-heading);
+      font-size: 1.375rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.25rem;
+    }
+    .device-card__desc {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+    }
+
+    /* Badges */
+    .badge {
+      display: inline-block;
+      font-size: 0.625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      flex-shrink: 0;
+    }
+    .badge--active {
+      background: #ECFDF5;
+      color: #047857;
+      border: 1px solid #A7F3D0;
+    }
+    .badge--legacy {
+      background: #FFF7ED;
+      color: #9A3412;
+      border: 1px solid #FED7AA;
+    }
+
+    /* Language grid */
+    .lang-section {
+      margin-top: var(--space-sm);
+    }
+    .lang-section__label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+    }
+    .lang-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .lang-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background var(--transition);
+    }
+    .lang-btn--active {
+      background: var(--blue);
+      color: var(--white);
+    }
+    .lang-btn--active:hover {
+      background: #005aa3;
+    }
+    .lang-btn--soon {
+      background: #EDEEF0;
+      color: var(--text-muted);
+      cursor: not-allowed;
+    }
+    .lang-btn--soon .lang-soon-label {
+      font-size: 0.5625rem;
+      margin-left: 0.25rem;
+      opacity: 0.6;
+    }
+    .lang-btn--pending {
+      width: 100%;
+      background: #EDEEF0;
+      color: var(--text-muted);
+      cursor: not-allowed;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.625rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    /* Legacy section */
+    .legacy-section {
+      background: #F2F4F6;
+      padding-block: var(--space-2xl);
+    }
+    .legacy-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-md);
+    }
+    @media (min-width: 768px) {
+      .legacy-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .legacy-card {
+      background: var(--white);
+      padding: var(--space-md);
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(193, 199, 212, 0.1);
+    }
+    .legacy-card__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-sm);
+    }
+    .legacy-card__name {
+      font-family: var(--font-heading);
+      font-size: 1.0625rem;
+      font-weight: 600;
+    }
+    .legacy-card__desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: var(--space-md);
+    }
+
+    /* IFU Footer */
+    .ifu-footer {
+      background: var(--white);
+      border-top: 1px solid #E5ECF4;
+      padding: var(--space-xl) 0;
+    }
+    .ifu-footer__inner {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-lg);
+    }
+    @media (min-width: 768px) {
+      .ifu-footer__inner { grid-template-columns: 1fr 1fr; }
+    }
+    .ifu-footer__brand {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .ifu-footer__brand img {
+      height: 28px;
+      width: auto;
+      max-width: 160px;
+    }
+    .ifu-footer__brand p {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .ifu-footer__brand-links {
+      display: flex;
+      gap: var(--space-sm);
+    }
+    .ifu-footer__brand-links a {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      transition: color var(--transition);
+    }
+    .ifu-footer__brand-links a:hover { color: var(--blue); }
+
+    .ifu-footer__regulatory {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    @media (min-width: 768px) {
+      .ifu-footer__regulatory { text-align: right; align-items: flex-end; justify-content: flex-end; }
+    }
+    .ifu-footer__regulatory p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .ifu-footer__regulatory p:first-child {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.625rem;
+      color: var(--text-dark);
+    }
+    .ifu-footer__regulatory p em {
+      font-style: italic;
+    }
+    .ifu-footer__regulatory .trademark-notice {
+      font-size: 0.625rem;
+      opacity: 0.75;
+      margin-top: 0.5rem;
     }
   </style>
 </head>
+
 <body>
-<div class="bg-layer"></div>
-<div class="page">
 
-<header>
-  <img src="data:image/png;base64,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" alt="GraMedica" />
-  <div class="brand-block">
-    <h1>GraMedica</h1>
-    <p>Restoring motion. Restoring life.</p>
-  </div>
-  <div class="header-right">
-    <a href="https://www.gramedica.com">gramedica.com</a><br>
-    Graham Medical Technologies<br>Rochester, MI USA
-  </div>
-</header>
+  <!-- ══ NAVIGATION ════════════════════════════════════════════════════ -->
+  <nav class="ifu-nav">
+    <div class="ifu-nav__inner container">
+      <a href="/" class="ifu-nav__logo">
+        <img src="/assets/images/logo-nav-hz.png" alt="GraMedica" />
+      </a>
+      <div class="ifu-nav__links">
+        <a href="#active-devices" class="active">Active Devices</a>
+        <a href="#legacy-devices">Legacy Devices</a>
+        <a href="/">Back to Site</a>
+      </div>
+      <a href="/contact-us/" class="btn btn--primary" style="padding:0.4rem 1.25rem;font-size:0.8125rem;">
+        Contact Us
+      </a>
+    </div>
+  </nav>
 
-<section class="hero">
-  <div class="hero-label">Digital IFU Library</div>
-  <h2>Instructions<br><span>for Use</span></h2>
-  <p>Select your product and preferred language below to download the current Instructions for Use document. Documents are provided in PDF format and require a PDF viewer.</p>
-</section>
+  <!-- ══ WARNING BANNER ════════════════════════════════════════════════ -->
+  <div class="warning-banner">
+    <div class="warning-banner__inner container">
+      <span class="material-symbols-outlined" style="font-size:1.25rem;">warning</span>
+      <span>Platform Test — Not for Clinical Use</span>
+    </div>
+  </div>
 
-<div class="notice">
-  <strong>&#9888; Platform Test &mdash; Not for Clinical Use.</strong>&nbsp;
-  This page is currently in configuration testing. IFU documents linked here are placeholder files only.
-  Final approved IFU content will be published upon QA sign-off and document control release.
-</div>
+  <!-- ══ HERO ══════════════════════════════════════════════════════════ -->
+  <header class="ifu-hero">
+    <div class="container">
+      <div style="max-width:720px;">
+        <span class="ifu-hero__eyebrow">Digital IFU Library</span>
+        <h1>Instructions for Use</h1>
+        <p>
+          Access digital Instructions for Use documents for all GraMedica medical devices.
+          Select your device and preferred language below to view or download high-resolution
+          clinical documentation.
+        </p>
+      </div>
+    </div>
+  </header>
 
-<div class="section-label">Active Devices</div>
-<div class="products">
-  <div class="product-card">
-    <div class="product-header">
-      <div class="product-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L17 6V14L10 18L3 14V6L10 2Z" stroke="#00C8FF" stroke-width="1.5"/></svg></div>
-      <div class="product-title"><h3>HyProCure&reg; I</h3><p>Extra-Osseous TaloTarsal Stabilization</p></div>
-      <span class="status-badge status-active">Active</span>
-    </div>
-    <div class="lang-grid">
-      <a class="lang-btn" href="https://gramedica.sharepoint.com/:b:/s/IFU/IQCmHZkX_W5wTqCRyW-nny_gARSanImbXNrwdusWFoIH6n0?e=vxTY1B" target="_blank" rel="noopener"><span class="flag">&#127482;&#127480;</span><span class="lang-name">English<span class="lang-code">EN</span></span></a>
-      <a class="lang-btn" href="https://gramedica.sharepoint.com/:b:/s/IFU/IQBtv9i3wrAcSrtRt5bfJIY1AWiHYenZN8uM8C7w2R_U9Uk?e=7bdjJ5" target="_blank" rel="noopener"><span class="flag">&#127466;&#127480;</span><span class="lang-name">Espa&ntilde;ol<span class="lang-code">ES</span></span></a>
-      <div class="lang-btn soon"><span class="flag">&#127465;&#127466;</span><span class="lang-name">Deutsch<span class="lang-code">DE &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127477;&#127481;</span><span class="lang-name">Portugu&ecirc;s<span class="lang-code">PT &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127464;&#127475;</span><span class="lang-name">&#20013;&#25991; &#31616;<span class="lang-code">ZH-CN &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127481;&#127484;</span><span class="lang-name">&#20013;&#25991; &#32321;<span class="lang-code">ZH-TW &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127481;&#127469;</span><span class="lang-name">Thai<span class="lang-code">TH &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127479;&#127476;</span><span class="lang-name">Rom&acirc;n&#259;<span class="lang-code">RO &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127480;&#127462;</span><span class="lang-name">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;<span class="lang-code">AR &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127480;&#127466;</span><span class="lang-name">Svenska<span class="lang-code">SV &mdash; Soon</span></span></div>
-    </div>
-    <div class="coming-soon">Additional language translations pending QA release.</div>
-  </div>
-  <div class="product-card">
-    <div class="product-header">
-      <div class="product-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L17 6V14L10 18L3 14V6L10 2Z" stroke="#00C8FF" stroke-width="1.5"/></svg></div>
-      <div class="product-title"><h3>HyProCure&reg; II</h3><p>Extra-Osseous TaloTarsal Stabilization</p></div>
-      <span class="status-badge status-active">Active</span>
-    </div>
-    <div class="lang-grid">
-      <a class="lang-btn" href="LINK_HPC2_EN" target="_blank" rel="noopener"><span class="flag">&#127482;&#127480;</span><span class="lang-name">English<span class="lang-code">EN</span></span></a>
-      <a class="lang-btn" href="LINK_HPC2_ES" target="_blank" rel="noopener"><span class="flag">&#127466;&#127480;</span><span class="lang-name">Espa&ntilde;ol<span class="lang-code">ES</span></span></a>
-      <div class="lang-btn soon"><span class="flag">&#127465;&#127466;</span><span class="lang-name">Deutsch<span class="lang-code">DE &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127477;&#127481;</span><span class="lang-name">Portugu&ecirc;s<span class="lang-code">PT &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127464;&#127475;</span><span class="lang-name">&#20013;&#25991; &#31616;<span class="lang-code">ZH-CN &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127481;&#127484;</span><span class="lang-name">&#20013;&#25991; &#32321;<span class="lang-code">ZH-TW &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127481;&#127469;</span><span class="lang-name">Thai<span class="lang-code">TH &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127479;&#127476;</span><span class="lang-name">Rom&acirc;n&#259;<span class="lang-code">RO &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127480;&#127462;</span><span class="lang-name">&#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;<span class="lang-code">AR &mdash; Soon</span></span></div>
-      <div class="lang-btn soon"><span class="flag">&#127480;&#127466;</span><span class="lang-name">Svenska<span class="lang-code">SV &mdash; Soon</span></span></div>
-    </div>
-    <div class="coming-soon">Additional language translations pending QA release.</div>
-  </div>
-</div>
+  <main>
 
-<div class="section-label">Legacy Devices &mdash; In-Field Reference</div>
-<div class="products">
-  <div class="product-card">
-    <div class="product-header">
-      <div class="product-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" stroke="#8A9BB0" stroke-width="1.5"/></svg></div>
-      <div class="product-title"><h3>OsteoWedge&reg;</h3><p>Reference documentation for devices in the field</p></div>
-      <span class="status-badge status-legacy">Legacy</span>
-    </div>
-    <div class="lang-grid">
-      <div class="lang-btn soon"><span class="flag">&#127482;&#127480;</span><span class="lang-name">English<span class="lang-code">EN &mdash; Pending</span></span></div>
-    </div>
-    <div class="coming-soon">Pending QA inventory confirmation.</div>
-  </div>
-  <div class="product-card">
-    <div class="product-header">
-      <div class="product-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" stroke="#8A9BB0" stroke-width="1.5"/></svg></div>
-      <div class="product-title"><h3>OptiToe&reg;</h3><p>Reference documentation for devices in the field</p></div>
-      <span class="status-badge status-legacy">Legacy</span>
-    </div>
-    <div class="lang-grid">
-      <div class="lang-btn soon"><span class="flag">&#127482;&#127480;</span><span class="lang-name">English<span class="lang-code">EN &mdash; Pending</span></span></div>
-    </div>
-    <div class="coming-soon">Pending QA inventory confirmation.</div>
-  </div>
-  <div class="product-card">
-    <div class="product-header">
-      <div class="product-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="4" y="4" width="12" height="12" rx="2" stroke="#8A9BB0" stroke-width="1.5"/></svg></div>
-      <div class="product-title"><h3>K-Wire</h3><p>Reference documentation for devices in the field</p></div>
-      <span class="status-badge status-legacy">Legacy</span>
-    </div>
-    <div class="lang-grid">
-      <div class="lang-btn soon"><span class="flag">&#127482;&#127480;</span><span class="lang-name">English<span class="lang-code">EN &mdash; Pending</span></span></div>
-    </div>
-    <div class="coming-soon">Pending QA inventory confirmation.</div>
-  </div>
-</div>
+    <!-- ══ ACTIVE DEVICES ════════════════════════════════════════════════ -->
+    <section id="active-devices" style="padding:var(--space-2xl) 0;">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Active Devices</h2>
+          <div class="section-heading__line"></div>
+        </div>
 
-<footer>
-  <div>
-    <div class="footer-brand">
-      <img src="data:image/png;base64,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" alt="GraMedica" />
-      <span>GraMedica</span>
-    </div>
-    <div class="footer-info">
-      Graham Medical Technologies d/b/a GraMedica<br>
-      236 Mill Street, Rochester, MI 48307 USA<br>
-      <a href="https://www.gramedica.com">www.gramedica.com</a><br>
-      GraMedica&reg; and HyProCure&reg; are registered trademarks of Graham Medical Technologies.
-    </div>
-  </div>
-  <div class="footer-right">
-    Rx Only &mdash; Prescription Use Only<br>
-    For single use only<br>
-    &copy; 2026 Graham Medical Technologies
-  </div>
-</footer>
+        <div class="device-cards">
 
-</div>
+          <!-- HyProCure I -->
+          <div class="device-card">
+            <div class="device-card__header">
+              <div>
+                <div class="device-card__name">HyProCure&reg; I</div>
+                <div class="device-card__desc">Extra-Osseous TaloTarsal Stabilization Device</div>
+              </div>
+              <span class="badge badge--active">Active</span>
+            </div>
+            <div class="lang-section">
+              <p class="lang-section__label">Available Languages</p>
+              <div class="lang-grid">
+                <a href="[NEEDS CONFIRMATION]" class="lang-btn lang-btn--active" target="_blank" rel="noopener">EN</a>
+                <a href="[NEEDS CONFIRMATION]" class="lang-btn lang-btn--active" target="_blank" rel="noopener">ES</a>
+                <a href="[NEEDS CONFIRMATION]" class="lang-btn lang-btn--active" target="_blank" rel="noopener">DE</a>
+                <span class="lang-btn lang-btn--soon">PT <span class="lang-soon-label">Soon</span></span>
+                <span class="lang-btn lang-btn--soon">ZH-CN <span class="lang-soon-label">Soon</span></span>
+                <span class="lang-btn lang-btn--soon">ZH-TW <span class="lang-soon-label">Soon</span></span>
+                <span class="lang-btn lang-btn--soon">TH <span class="lang-soon-label">Soon</span></span>
+                <span class="lang-btn lang-btn--soon">RO <span class="lang-soon-label">Soon</span></span>
+                <span class="lang-btn lang-btn--soon">AR <span class="lang-soon-label">Soon</span></span>
+                <span class="lang-btn lang-btn--soon">SV <span class="lang-soon-label">Soon</span></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- HyProCure II -->
+          <div class="device-card">
+            <div class="device-card__header">
+              <div>
+                <div class="device-card__name">HyProCure&reg; II</div>
+                <div class="device-card__desc">Second Generation TaloTarsal Stabilization Device</div>
+              </div>
+              <span class="badge badge--active">Active</span>
+            </div>
+            <div class="lang-section">
+              <p class="lang-section__label">Available Languages</p>
+              <div class="lang-grid">
+                <a href="[NEEDS CONFIRMATION]" class="lang-btn lang-btn--active" target="_blank" rel="noopener">EN</a>
+                <a href="[NEEDS CONFIRMATION]" class="lang-btn lang-btn--active" target="_blank" rel="noopener">ES</a>
+                <a href="[NEEDS CONFIRMATION]" class="lang-btn lang-btn--active" target="_blank" rel="noopener">DE</a>
+                <span class="lang-btn lang-btn--soon">PT <span class="lang-soon-label">Soon</span></span>
+                <span class="lang-btn lang-btn--soon">ZH-CN <span class="lang-soon-label">Soon</span></span>
+                <span class="lang-btn lang-btn--soon">ZH-TW <span class="lang-soon-label">Soon</span></span>
+                <span class="lang-btn lang-btn--soon">TH <span class="lang-soon-label">Soon</span></span>
+                <span class="lang-btn lang-btn--soon">RO <span class="lang-soon-label">Soon</span></span>
+                <span class="lang-btn lang-btn--soon">AR <span class="lang-soon-label">Soon</span></span>
+                <span class="lang-btn lang-btn--soon">SV <span class="lang-soon-label">Soon</span></span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ LEGACY DEVICES ════════════════════════════════════════════════ -->
+    <section id="legacy-devices" class="legacy-section">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Legacy Devices</h2>
+          <div class="section-heading__line" style="background:rgba(193,199,212,0.3);"></div>
+        </div>
+
+        <div class="legacy-grid">
+
+          <div class="legacy-card">
+            <div class="legacy-card__header">
+              <span class="legacy-card__name">OsteoWedge&reg;</span>
+              <span class="badge badge--legacy">Legacy</span>
+            </div>
+            <p class="legacy-card__desc">Open Wedge Bone Locking System.</p>
+            <div class="lang-btn lang-btn--pending">
+              EN (Pending QA)
+              <span class="material-symbols-outlined" style="font-size:0.875rem;">lock</span>
+            </div>
+          </div>
+
+          <div class="legacy-card">
+            <div class="legacy-card__header">
+              <span class="legacy-card__name">OptiToe&reg;</span>
+              <span class="badge badge--legacy">Legacy</span>
+            </div>
+            <p class="legacy-card__desc">Lesser toe reconstruction and fusion device.</p>
+            <div class="lang-btn lang-btn--pending">
+              EN (Pending QA)
+              <span class="material-symbols-outlined" style="font-size:0.875rem;">lock</span>
+            </div>
+          </div>
+
+          <div class="legacy-card">
+            <div class="legacy-card__header">
+              <span class="legacy-card__name">K-Wire</span>
+              <span class="badge badge--legacy">Legacy</span>
+            </div>
+            <p class="legacy-card__desc">Kirschner Wires for temporary bone fixation.</p>
+            <div class="lang-btn lang-btn--pending">
+              EN (Pending QA)
+              <span class="material-symbols-outlined" style="font-size:0.875rem;">lock</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ════════════════════════════════════════════════════════ -->
+  <footer class="ifu-footer">
+    <div class="container">
+      <div class="ifu-footer__inner">
+        <div class="ifu-footer__brand">
+          <a href="/">
+            <img src="/assets/images/logo-footer-hz.png" alt="GraMedica" />
+          </a>
+          <p>&copy; 2026 Graham Medical Technologies, LLC. All rights reserved.</p>
+          <div class="ifu-footer__brand-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Use</a>
+          </div>
+        </div>
+        <div class="ifu-footer__regulatory">
+          <p>Regulatory Compliance Information</p>
+          <p><em>Rx Only — Prescription Use Only</em></p>
+          <p>For single use only. Consult Instructions for Use (IFU).</p>
+          <p class="trademark-notice">
+            GraMedica&reg; and HyProCure&reg; are registered trademarks of Graham Medical Technologies, LLC.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
-
